@@ -58,5 +58,10 @@
   ],
   "files": [
     "definitions/type.d.ts"
+  ],
+  "include": [
+    "apps/**/*",
+    "libs/**/*",
+    "definitions/**/*"
   ]
 }

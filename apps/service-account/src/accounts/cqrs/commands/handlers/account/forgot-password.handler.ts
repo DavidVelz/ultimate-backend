@@ -61,7 +61,7 @@ export class ForgotPasswordHandler
       };
     } catch (error) {
       this.logger.log(error);
-      throw new RpcException(error);
+      throw new RpcException(error as unknown as string);
     }
   }
 }

@@ -47,18 +47,18 @@ export class LoginUserHandler implements ICommandHandler<LoginUserCommand> {
         throw new NotFoundError('Your login credentials is incorrect');
       }
 
-      if (cmd.service === LoginServiceTypes.Password) {
+      if (cmd && cmd.service === LoginServiceTypes.Password) {
         if (
-          !validPassword(cmd.params.password, user.services.password.hashed)
+          !validPassword(cmd?.params?.password, user?.services?.password?.hashed)
         ) {
           throw new ValidationError('Your login credentials is incorrect');
         }
 
         // Check if user is verified
-        const userEmail = user.emails.reduce(
-          (previousValue) => previousValue.primary === true && previousValue,
+        const userEmail = user?.emails?.reduce(
+          (previousValue) => previousValue?.primary === true && previousValue,
         );
-        if (!userEmail.verified) {
+        if (!userEmail?.verified) {
           throw new ValidationError('Please verify your email address');
         }
       }
@@ -78,32 +78,32 @@ export class LoginUserHandler implements ICommandHandler<LoginUserCommand> {
 }
 
 function getLoginQuery(cmd: LoginRequest) {
-  if (cmd.service === LoginServiceTypes.Password) {
+  if (cmd?.service === LoginServiceTypes.Password) {
     return {
-      emails: { $elemMatch: { address: cmd.params.email, primary: true } },
+      emails: { $elemMatch: { address: cmd?.params?.email, primary: true } },
     };
-  } else if (cmd.service === LoginServiceTypes.Google) {
+  } else if (cmd?.service === LoginServiceTypes.Google) {
     return {
-      emails: { $elemMatch: { address: cmd.params.email, primary: true } },
-      'services.google.userId': cmd.params.accessToken,
+      emails: { $elemMatch: { address: cmd?.params?.email, primary: true } },
+      'services.google.userId': cmd?.params?.accessToken,
     };
-  } else if (cmd.service === LoginServiceTypes.Github) {
+  } else if (cmd?.service === LoginServiceTypes.Github) {
     return {
       $and: [
         {
-          emails: { $elemMatch: { address: cmd.params.email, primary: true } },
+          emails: { $elemMatch: { address: cmd?.params?.email, primary: true } },
         },
-        { 'services.github.userId': cmd.params.userId },
+        { 'services.github.userId': cmd?.params?.userId },
       ],
     };
-  } else if (cmd.service === LoginServiceTypes.Facebook) {
+  } else if (cmd?.service === LoginServiceTypes.Facebook) {
     return {
-      emails: { $elemMatch: { address: cmd.params.email, primary: true } },
-      'services.facebook.userId': cmd.params.userId,
+      emails: { $elemMatch: { address: cmd?.params?.email, primary: true } },
+      'services.facebook.userId': cmd?.params?.userId,
     };
   } else {
     return {
-      emails: { $elemMatch: { address: cmd.params.email, primary: true } },
+      emails: { $elemMatch: { address: cmd?.params?.email, primary: true } },
     };
   }
 }
