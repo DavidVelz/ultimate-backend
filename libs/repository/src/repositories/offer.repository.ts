@@ -1,6 +1,6 @@
 import { CACHE_MANAGER, CacheStore, Inject, Injectable } from '@nestjs/common';
 import { Db, MongoClient } from 'mongodb';
-import { merge } from 'lodash';
+import merge = require('lodash/merge');
 import {
   BaseMongoRepository,
   Before,

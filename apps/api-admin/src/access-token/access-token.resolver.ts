@@ -44,7 +44,7 @@ export class AccessTokenResolver {
         setRpcContext(ctx),
       )
       .toPromise();
-    return (res.accessToken as unknown) as AccessToken[];
+    return res.accessToken as unknown as AccessToken[];
   }
 
   @UseGuards(GqlAuthGuard)
@@ -68,7 +68,7 @@ export class AccessTokenResolver {
         setRpcContext(ctx),
       )
       .toPromise();
-    return (res.accessToken as unknown) as AccessToken;
+    return res.accessToken as unknown as AccessToken;
   }
 
   @Mutation(() => AccessTokenMutations, { nullable: true, name: 'accessToken' })

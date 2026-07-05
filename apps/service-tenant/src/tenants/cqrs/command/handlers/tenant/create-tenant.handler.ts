@@ -25,7 +25,8 @@ import {
  */
 @CommandHandler(CreateTenantCommand)
 export class CreateTenantHandler
-  implements ICommandHandler<CreateTenantCommand> {
+  implements ICommandHandler<CreateTenantCommand>
+{
   logger = new Logger(this.constructor.name);
 
   /**
@@ -136,7 +137,7 @@ export class CreateTenantHandler
       /*  Publish to the event store of our newly created tenant */
       await this.eventBus.publish(new TenantCreatedEvent(tenant));
       return {
-        tenant: (tenant as unknown) as Tenant,
+        tenant: tenant as unknown as Tenant,
       };
     } catch (error) {
       this.logger.error(error);

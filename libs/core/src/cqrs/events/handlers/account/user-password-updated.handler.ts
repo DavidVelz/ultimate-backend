@@ -4,7 +4,8 @@ import { UserPasswordUpdatedEvent } from '../../impl';
 
 @EventsHandler(UserPasswordUpdatedEvent)
 export class UserPasswordUpdatedHandler
-  implements IEventHandler<UserPasswordUpdatedEvent> {
+  implements IEventHandler<UserPasswordUpdatedEvent>
+{
   handle(event: UserPasswordUpdatedEvent): any {
     Logger.log(event, event.constructor.name);
   }

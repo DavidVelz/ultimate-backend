@@ -15,7 +15,7 @@ export class CacheStoreConfigService implements CacheOptionsFactory {
   constructor(@InjectConfig() private readonly config: EtcdConfig) {}
 
   createCacheOptions(): Promise<CacheModuleOptions> | CacheModuleOptions {
-    const database = this.config.get<redis.RedisOptions>('database.redis');
+    const database = this.config.get<redis.ClientOpts>('database.redis');
     const caching = this.config.get<{ ttl: number; max: number }>(
       'app.caching',
     );

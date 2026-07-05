@@ -1,6 +1,6 @@
 import { CACHE_MANAGER, CacheStore, Inject, Injectable } from '@nestjs/common';
 import { Db, MongoClient } from 'mongodb';
-import { merge } from 'lodash';
+import merge = require('lodash/merge');
 import {
   BaseMongoRepository,
   Before,
@@ -25,9 +25,7 @@ import { AccessTokenEntity } from '../';
     },
   ],
 })
-export class AccessTokenRepository extends BaseMongoRepository<
-  AccessTokenEntity
-> {
+export class AccessTokenRepository extends BaseMongoRepository<AccessTokenEntity> {
   constructor(
     @InjectClient() private readonly dbc: MongoClient,
     @InjectMongoDB() private readonly db: Db,

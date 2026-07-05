@@ -12,7 +12,8 @@ import { ObjectId } from 'mongodb';
 
 @CommandHandler(CreateProjectCommand)
 export class CreateProjectHandler
-  implements ICommandHandler<CreateProjectCommand> {
+  implements ICommandHandler<CreateProjectCommand>
+{
   logger = new Logger(this.constructor.name);
   projectRepository: ProjectRepository;
 

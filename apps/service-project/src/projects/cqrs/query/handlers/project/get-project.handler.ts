@@ -30,7 +30,7 @@ export class GetProjectHandler implements IQueryHandler<GetProjectQuery> {
       const project = await this.projectRepository.findOne({ ...filter });
 
       return {
-        project: (project as unknown) as Project,
+        project: project as unknown as Project,
       };
     } catch (e) {
       this.logger.error(e);

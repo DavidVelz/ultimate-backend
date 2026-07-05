@@ -42,7 +42,7 @@ export class GetMembersHandler implements IQueryHandler<GetMembersQuery> {
       }
 
       return {
-        members: (members as unknown) as Member[],
+        members: members as unknown as Member[],
       };
     } catch (e) {
       this.logger.error(e);

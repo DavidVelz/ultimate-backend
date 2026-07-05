@@ -3,7 +3,7 @@ import { ObjectID } from 'mongodb';
 import { BaseDto } from '../dtos';
 
 export abstract class BaseEntity<
-  T extends BaseDto = BaseDto
+  T extends BaseDto = BaseDto,
 > extends AggregateRoot {
   id?: ObjectID | string;
 

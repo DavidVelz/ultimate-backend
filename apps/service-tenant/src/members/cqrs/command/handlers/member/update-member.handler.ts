@@ -12,7 +12,8 @@ import { RpcException } from '@nestjs/microservices';
 
 @CommandHandler(UpdateMemberCommand)
 export class UpdateMemberHandler
-  implements ICommandHandler<UpdateMemberCommand> {
+  implements ICommandHandler<UpdateMemberCommand>
+{
   logger = new Logger(this.constructor.name);
 
   constructor(
@@ -91,7 +92,7 @@ export class UpdateMemberHandler
 
       await this.eventBus.publish(new MemberUpdatedEvent(member));
       return {
-        member: (member as unknown) as Member,
+        member: member as unknown as Member,
       };
     } catch (error) {
       this.logger.log(error);

@@ -14,7 +14,8 @@ import { JwtService } from '@nestjs/jwt';
  */
 @CommandHandler(ForgotPasswordCommand)
 export class ForgotPasswordHandler
-  implements ICommandHandler<ForgotPasswordCommand> {
+  implements ICommandHandler<ForgotPasswordCommand>
+{
   logger = new Logger(this.constructor.name);
 
   /**

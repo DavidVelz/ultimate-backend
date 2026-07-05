@@ -1,7 +1,7 @@
 import { INestApplication, Logger } from '@nestjs/common';
 import { Transport } from '@nestjs/microservices';
 import { NestCloud } from '@nestcloud/core';
-import { join } from 'path';
+import { dirname, join } from 'path';
 import { AppUtils } from '@ultimatebackend/common';
 
 interface MicroserviceSetupOptions {
@@ -18,14 +18,19 @@ export async function microserviceSetup(
   const { hostname = '0.0.0.0', enableMqtt, enableNats } = options;
 
   AppUtils.killAppWithGrace(app);
+  const protoFullPath = join(process.cwd(), 'dist', 'libs', 'proto-schema', protoPath);
+  const protoDir = dirname(protoFullPath);
+
   app.connectMicroservice({
     transport: Transport.GRPC,
     options: {
       url: `${hostname}:${NestCloud.global.boot.get('service.port')}`,
       package: NestCloud.global.boot.get('service.name'),
-      protoPath: join(process.cwd(), `/dist/libs/proto-schema/${protoPath}`),
+      protoPath: protoFullPath,
     },
   });
+
+  Logger.log(`GRPC proto path: ${protoFullPath}`, 'Bootstrap');
 
   if (enableMqtt) {
     app.connectMicroservice({

@@ -1,16 +1,15 @@
 import { INestApplication, Logger } from '@nestjs/common';
-import * as session from 'express-session';
+const session = require('express-session');
 import * as passport from 'passport';
 import * as redis from 'redis';
-import * as useragent from 'express-useragent';
-import * as cookieParser from 'cookie-parser';
-import * as connectRedis from 'connect-redis';
+const useragent = require('express-useragent');
+const cookieParser = require('cookie-parser');
 import { Express } from 'express';
 import { NestCloud } from '@nestcloud/core';
 
 const parseIsoDuration = require('parse-iso-duration');
+const { RedisStore } = require('connect-redis');
 
-const RedisStore = connectRedis(session);
 const passportMiddleware = passport.initialize();
 const passportSessionMiddleware = passport.session();
 
@@ -19,7 +18,7 @@ export function authSetup(
   withPassport: boolean = true,
 ) {
   try {
-    const redisConfig: redis.RedisOptions = NestCloud.global.boot.get(
+    const redisConfig: redis.ClientOpts = NestCloud.global.boot.get(
       'redis',
       {},
     );
@@ -61,19 +60,21 @@ export function authSetup(
       name: authConfig.sessionKey,
     });
 
+    const anyApp = app as any;
+
     if (withPassport) {
       // @ts-ignore
-      // app.set('trust proxy', 1);
-      app.use(sessionMiddleware);
-      app.use(useragent.express());
-      app.use(passportMiddleware);
-      app.use(passportSessionMiddleware);
+      // anyApp.set('trust proxy', 1);
+      anyApp.use(sessionMiddleware);
+      anyApp.use(useragent.express());
+      anyApp.use(passportMiddleware);
+      anyApp.use(passportSessionMiddleware);
     } else {
-      app.use(cookieParser());
+      anyApp.use(cookieParser());
     }
 
     // @ts-ignore
-    app.set('subdomain offset', 1); // Enable sub domain in app
+    anyApp.set('subdomain offset', 1); // Enable sub domain in app
   } catch (e) {
     Logger.log(e, 'auth.setup');
   }

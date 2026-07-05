@@ -40,7 +40,7 @@ export class BillingsMutationResolver {
       )
       .toPromise();
 
-    return (result.subscription as unknown) as TenantSubscription;
+    return result.subscription as unknown as TenantSubscription;
   }
 
   @UseGuards(GqlAuthGuard)
@@ -66,6 +66,6 @@ export class BillingsMutationResolver {
       )
       .toPromise();
 
-    return (result.subscription as unknown) as TenantSubscription;
+    return result.subscription as unknown as TenantSubscription;
   }
 }

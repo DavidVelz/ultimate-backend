@@ -18,7 +18,8 @@ import {
  */
 @CommandHandler(UpdateTenantCommand)
 export class UpdateTenantHandler
-  implements ICommandHandler<UpdateTenantCommand> {
+  implements ICommandHandler<UpdateTenantCommand>
+{
   logger = new Logger(this.constructor.name);
 
   /**
@@ -89,7 +90,7 @@ export class UpdateTenantHandler
       /*  Publish to the event store of our newly created tenant */
       await this.eventBus.publish(new TenantUpdatedEvent(tenant));
       return {
-        tenant: (tenant as unknown) as Tenant,
+        tenant: tenant as unknown as Tenant,
       };
     } catch (error) {
       this.logger.error(error);

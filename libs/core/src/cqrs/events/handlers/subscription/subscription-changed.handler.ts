@@ -4,7 +4,8 @@ import { SubscriptionChangedEvent } from '../../impl';
 
 @EventsHandler(SubscriptionChangedEvent)
 export class SubscriptionChangedHandler
-  implements IEventHandler<SubscriptionChangedEvent> {
+  implements IEventHandler<SubscriptionChangedEvent>
+{
   handle(event: SubscriptionChangedEvent): any {
     Logger.log(event, event.constructor.name); // write here
   }

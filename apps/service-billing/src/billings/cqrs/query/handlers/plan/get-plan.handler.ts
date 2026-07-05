@@ -25,7 +25,7 @@ export class GetPlanHandler implements IQueryHandler<GetPlanQuery> {
     try {
       const plan = await this.planRepository.findOne({ id: input.id }, true);
       return {
-        plan: (plan as unknown) as Plan,
+        plan: plan as unknown as Plan,
       };
     } catch (e) {
       this.logger.error(e);

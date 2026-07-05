@@ -12,7 +12,8 @@ import { CreateCustomerResponse } from '@ultimatebackend/proto-schema/billing';
  */
 @CommandHandler(CreateStripeCustomerCommand)
 export class CreateStripeCustomerHandler
-  implements ICommandHandler<CreateStripeCustomerCommand> {
+  implements ICommandHandler<CreateStripeCustomerCommand>
+{
   logger = new Logger(this.constructor.name);
 
   /**

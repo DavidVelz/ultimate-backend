@@ -9,10 +9,8 @@ export class BaseModule implements OnModuleInit {
   constructor(private readonly clientService: RolesRpcClientService) {}
 
   private static scanResourcesAndPermissions() {
-    const metadataMap: Map<
-      string,
-      { name: string; resource: IResource[] }
-    > = new Map();
+    const metadataMap: Map<string, { name: string; resource: IResource[] }> =
+      new Map();
     const resources = getMetadataStorage().resources;
     // const permissions = getMetadataStorage().permissions;
 

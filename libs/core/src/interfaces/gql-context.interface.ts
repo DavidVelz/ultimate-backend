@@ -13,8 +13,14 @@ import {
 import { Context } from 'apollo-server-core/src/types';
 import { TenantInfo } from '@ultimatebackend/core/mutiltenancy';
 
-export interface IRequest extends ExpressRequest {
+export interface IRequest {
   tenantInfo?: TenantInfo;
+  headers?: any;
+  connection?: any;
+  query?: any;
+  cookies?: any;
+  signedCookies?: any;
+  path?: string;
 }
 export interface GqlContext
   extends Partial<PassportContext<UserEntity, IRequest> & Context> {

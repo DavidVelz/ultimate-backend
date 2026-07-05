@@ -10,7 +10,7 @@ export class AccessTokenRpcClientService {
     package: SERVICE_LIST.access.package,
     protoPath: SERVICE_LIST.access.protoPath,
   })
-  private readonly client: GrpcClient;
+  private readonly client!: GrpcClient;
 
   @Service(SERVICE_LIST.access.service, {
     service: SERVICE_LIST.access.consulName,

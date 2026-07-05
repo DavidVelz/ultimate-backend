@@ -18,7 +18,7 @@ export class GetPlansHandler implements IQueryHandler<GetPlansQuery> {
     this.logger.log(`Async ${query.constructor.name}...`);
 
     try {
-      const plans = ((await this.planRepository.find()) as unknown) as Plan[];
+      const plans = (await this.planRepository.find()) as unknown as Plan[];
       return {
         plans,
       };

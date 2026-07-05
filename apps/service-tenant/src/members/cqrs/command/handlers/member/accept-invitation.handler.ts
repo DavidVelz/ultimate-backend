@@ -13,7 +13,8 @@ import { Logger } from '@nestjs/common';
 
 @CommandHandler(AcceptInvitationCommand)
 export class AcceptInvitationHandler
-  implements ICommandHandler<AcceptInvitationCommand> {
+  implements ICommandHandler<AcceptInvitationCommand>
+{
   logger = new Logger(this.constructor.name);
 
   constructor(
@@ -74,7 +75,7 @@ export class AcceptInvitationHandler
         .toPromise();
 
       return {
-        member: (member as unknown) as Member,
+        member: member as unknown as Member,
       };
     } catch (e) {
       this.logger.error(e);

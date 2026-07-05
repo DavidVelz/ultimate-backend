@@ -31,13 +31,13 @@ export class GetProjectsHandler implements IQueryHandler<GetProjectsQuery> {
         });
 
         return {
-          projects: (projectFil as unknown) as Project[],
+          projects: projectFil as unknown as Project[],
         };
       }
 
       const projects = await this.projectRepository.find();
       return {
-        projects: (projects as unknown) as Project[],
+        projects: projects as unknown as Project[],
       };
     } catch (e) {
       this.logger.error(e);

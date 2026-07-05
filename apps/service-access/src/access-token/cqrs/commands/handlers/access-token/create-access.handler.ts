@@ -19,7 +19,8 @@ import { AccessTokenCreatedEvent } from '@ultimatebackend/core';
  */
 @CommandHandler(CreateAccessCommand)
 export class CreateAccessHandler
-  implements ICommandHandler<CreateAccessCommand> {
+  implements ICommandHandler<CreateAccessCommand>
+{
   logger = new Logger(this.constructor.name);
 
   /**

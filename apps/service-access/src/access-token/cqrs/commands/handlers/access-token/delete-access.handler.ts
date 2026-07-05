@@ -15,7 +15,8 @@ import { mapAccessTokenEntityToProto } from '../../../../utitlity';
  */
 @CommandHandler(DeleteAccessCommand)
 export class DeleteAccessHandler
-  implements ICommandHandler<DeleteAccessCommand> {
+  implements ICommandHandler<DeleteAccessCommand>
+{
   logger = new Logger(this.constructor.name);
 
   /**

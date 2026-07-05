@@ -15,7 +15,8 @@ import {
  */
 @CommandHandler(RemoveTenantCommand)
 export class RemoveTenantHandler
-  implements ICommandHandler<RemoveTenantCommand> {
+  implements ICommandHandler<RemoveTenantCommand>
+{
   logger = new Logger(this.constructor.name);
 
   /**
@@ -54,7 +55,7 @@ export class RemoveTenantHandler
 
       await this.eventBus.publish(new TenantRemovedEvent(tenant));
       return {
-        tenant: (tenant as unknown) as Tenant,
+        tenant: tenant as unknown as Tenant,
       };
     } catch (error) {
       this.logger.error(error);

@@ -7,7 +7,8 @@ import { TenantAvailableQuery } from '../../impl';
 
 @QueryHandler(TenantAvailableQuery)
 export class TenantAvailableHandler
-  implements IQueryHandler<TenantAvailableQuery> {
+  implements IQueryHandler<TenantAvailableQuery>
+{
   logger = new Logger(this.constructor.name);
 
   constructor(private readonly tenantRepository: TenantRepository) {}

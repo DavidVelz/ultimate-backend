@@ -43,7 +43,7 @@ export class GetTenantsHandler implements IQueryHandler<GetTenantsQuery> {
       });
 
       return {
-        tenants: (tenants as unknown) as Tenant[],
+        tenants: tenants as unknown as Tenant[],
       };
     } catch (e) {
       this.logger.error(e);

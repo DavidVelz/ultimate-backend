@@ -1,4 +1,6 @@
-import { isEmpty, isPlainObject, transform } from 'lodash';
+import isEmpty = require('lodash/isEmpty');
+import isPlainObject = require('lodash/isPlainObject');
+import transform = require('lodash/transform');
 
 export * from './encryption.util';
 export * from './hash.utils';

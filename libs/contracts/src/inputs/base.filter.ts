@@ -143,8 +143,9 @@ export function FilterMongo<TItem>(
   };
 
   const target = new TItemClass();
-  const SuperClass = Object.getPrototypeOf(Object.getPrototypeOf(target))
-    .constructor;
+  const SuperClass = Object.getPrototypeOf(
+    Object.getPrototypeOf(target),
+  ).constructor;
   recursiveBuilder(target, FilterMongoClass, SuperClass);
 
   if (option && option.simple) {

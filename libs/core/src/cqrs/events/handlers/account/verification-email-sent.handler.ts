@@ -4,7 +4,8 @@ import { VerificationEmailSentEvent } from '../../impl';
 
 @EventsHandler(VerificationEmailSentEvent)
 export class VerificationEmailSentHandler
-  implements IEventHandler<VerificationEmailSentEvent> {
+  implements IEventHandler<VerificationEmailSentEvent>
+{
   handle(event: VerificationEmailSentEvent): any {
     Logger.log(event, event.constructor.name);
   }

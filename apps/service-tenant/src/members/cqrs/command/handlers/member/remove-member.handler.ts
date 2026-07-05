@@ -15,7 +15,8 @@ import {
 
 @CommandHandler(RemoveMemberCommand)
 export class RemoveMemberHandler
-  implements ICommandHandler<RemoveMemberCommand> {
+  implements ICommandHandler<RemoveMemberCommand>
+{
   logger = new Logger(this.constructor.name);
 
   constructor(
@@ -96,7 +97,7 @@ export class RemoveMemberHandler
 
       await this.eventBus.publish(new MemberRemovedEvent(member));
       return {
-        member: (member as unknown) as Member,
+        member: member as unknown as Member,
       };
     } catch (error) {
       this.logger.log(error);

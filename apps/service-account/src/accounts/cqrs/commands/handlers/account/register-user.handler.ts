@@ -26,7 +26,8 @@ import {
  */
 @CommandHandler(RegisterUserCommand)
 export class RegisterUserHandler
-  implements ICommandHandler<RegisterUserCommand> {
+  implements ICommandHandler<RegisterUserCommand>
+{
   logger = new Logger(this.constructor.name);
 
   /**

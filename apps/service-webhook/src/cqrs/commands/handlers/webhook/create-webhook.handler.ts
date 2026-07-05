@@ -19,7 +19,8 @@ import { mapWebhookEntityToProto } from '../../../../utitlity';
  */
 @CommandHandler(CreateWebhookCommand)
 export class CreateWebhookHandler
-  implements ICommandHandler<CreateWebhookCommand> {
+  implements ICommandHandler<CreateWebhookCommand>
+{
   logger = new Logger(this.constructor.name);
   repo: WebhookRepository;
 

@@ -44,7 +44,7 @@ export class GetTenantHandler implements IQueryHandler<GetTenantQuery> {
         ...userFilter,
       });
       return {
-        tenant: (tenant as unknown) as Tenant,
+        tenant: tenant as unknown as Tenant,
       };
     } catch (e) {
       this.logger.error(e);

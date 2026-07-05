@@ -8,7 +8,8 @@ import { RpcException } from '@nestjs/microservices';
 
 @CommandHandler(DeleteStripeCustomerCommand)
 export class DeleteStripeCustomerHandler
-  implements ICommandHandler<DeleteStripeCustomerCommand> {
+  implements ICommandHandler<DeleteStripeCustomerCommand>
+{
   logger = new Logger(this.constructor.name);
 
   public constructor(

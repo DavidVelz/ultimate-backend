@@ -38,7 +38,7 @@ export class GqlConfigService implements GqlOptionsFactory {
       autoSchemaFile: true,
       path: 'graph',
       cors: corsApollOptions,
-      context: ({ req, res, payload, connection }): GqlContext => {
+      context: ({ req, res, payload, connection }: any): GqlContext => {
         const bc = buildContext({ req, res });
 
         return {
@@ -79,6 +79,6 @@ export class GqlConfigService implements GqlOptionsFactory {
           'request.credentials': 'same-origin',
         },
       },
-    };
+    } as unknown as GqlModuleOptions; 
   }
 }

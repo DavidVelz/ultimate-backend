@@ -4,7 +4,8 @@ import { UserRegisteredEvent } from '../../impl';
 
 @EventsHandler(UserRegisteredEvent)
 export class UserRegisteredHandler
-  implements IEventHandler<UserRegisteredEvent> {
+  implements IEventHandler<UserRegisteredEvent>
+{
   handle(event: UserRegisteredEvent): any {
     Logger.log(event, 'UserRegisteredEvent');
   }

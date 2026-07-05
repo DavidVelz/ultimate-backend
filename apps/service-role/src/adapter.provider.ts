@@ -17,8 +17,8 @@ export const adapterProvider: Provider = {
     uri = uri.slice(0, uri.length - 1);
     return await MongoAdapter.newAdapter({
       uri: jestMongoDb || uri,
-      collectionName: 'casbin',
-      databaseName: casbin.mongodb.name,
+      collection: 'casbin',
+      database: casbin.mongodb.name,
     });
   },
   inject: [NEST_CONFIG_PROVIDER],

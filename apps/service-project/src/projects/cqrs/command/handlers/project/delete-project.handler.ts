@@ -11,7 +11,8 @@ import { RpcException } from '@nestjs/microservices';
 
 @CommandHandler(DeleteProjectCommand)
 export class DeleteProjectHandler
-  implements ICommandHandler<DeleteProjectCommand> {
+  implements ICommandHandler<DeleteProjectCommand>
+{
   logger = new Logger(this.constructor.name);
   projectRepository: ProjectRepository;
 
@@ -40,7 +41,7 @@ export class DeleteProjectHandler
       await this.eventBus.publish(new ProjectDeletedEvent(project));
 
       return {
-        project: (project as unknown) as Project,
+        project: project as unknown as Project,
       };
     } catch (error) {
       this.logger.log(error);

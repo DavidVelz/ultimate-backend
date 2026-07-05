@@ -12,7 +12,8 @@ import { NotFoundRpcException } from '@ultimatebackend/common';
 
 @CommandHandler(CreateSubscriptionCommand)
 export class CreateSubscriptionHandler
-  implements ICommandHandler<CreateSubscriptionCommand> {
+  implements ICommandHandler<CreateSubscriptionCommand>
+{
   logger = new Logger(this.constructor.name);
 
   public constructor(

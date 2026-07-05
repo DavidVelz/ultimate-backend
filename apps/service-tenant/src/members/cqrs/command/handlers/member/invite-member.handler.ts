@@ -22,7 +22,8 @@ import { JwtService } from '@nestjs/jwt';
 
 @CommandHandler(InviteMemberCommand)
 export class InviteMemberHandler
-  implements ICommandHandler<InviteMemberCommand> {
+  implements ICommandHandler<InviteMemberCommand>
+{
   logger = new Logger(this.constructor.name);
 
   constructor(
@@ -133,7 +134,7 @@ export class InviteMemberHandler
       await this.eventBus.publish(new MemberInvitedEvent(member));
 
       return {
-        member: (member as unknown) as Member,
+        member: member as unknown as Member,
       };
     } catch (error) {
       this.logger.log(error);

@@ -12,7 +12,8 @@ import { subsSliceToProtoStripePlanSubs } from '../../../../../common';
 
 @QueryHandler(GetSubscriptionsQuery)
 export class GetSubscriptionsHandler
-  implements IQueryHandler<GetSubscriptionsQuery> {
+  implements IQueryHandler<GetSubscriptionsQuery>
+{
   logger = new Logger(this.constructor.name);
 
   public constructor(

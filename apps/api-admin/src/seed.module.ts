@@ -36,7 +36,7 @@ export class SeedService {
     const consulKey: string = this.boot.get('config.key');
     const hasConfig = await this.config.get();
 
-    if (hasConfig === {}) {
+    if (!hasConfig) {
       // Path to config example file
       const filePath = '/config.example';
       const value = await fs.readFileSync(join(__dirname, filePath), 'utf-8');

@@ -6,7 +6,6 @@ import {
   RolesRpcClientService,
   ServiceRegistryModule,
 } from '@ultimatebackend/core';
-import { AppService } from './app.service';
 import { RolesModule } from './roles/roles.module';
 import { AccountsModule } from './accounts/accounts.module';
 import { TenantsModule } from './tenants/tenants.module';
@@ -44,6 +43,6 @@ import { SeedModule } from './seed.module';
     AccessTokenModule,
   ],
   controllers: [],
-  providers: [AppService, CookieSerializer, RolesRpcClientService],
+  providers: [CookieSerializer, RolesRpcClientService],
 })
 export class AppModule {}

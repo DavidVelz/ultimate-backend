@@ -19,7 +19,8 @@ import { UpdateUserPasswordCommand } from '../../impl';
  */
 @CommandHandler(UpdateUserPasswordCommand)
 export class UpdateUserPasswordHandler
-  implements ICommandHandler<UpdateUserPasswordCommand> {
+  implements ICommandHandler<UpdateUserPasswordCommand>
+{
   logger = new Logger(this.constructor.name);
 
   /**

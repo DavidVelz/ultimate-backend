@@ -25,7 +25,7 @@ export class GetMemberHandler implements IQueryHandler<GetMemberQuery> {
         (previousValue) => previousValue.id === where.id && previousValue,
       );
       return {
-        member: (member as unknown) as Member,
+        member: member as unknown as Member,
       };
     } catch (e) {
       this.logger.error(e);

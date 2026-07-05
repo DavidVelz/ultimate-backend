@@ -39,7 +39,7 @@ export class AccountsMutationResolver {
       });
     }
     const serviceType: ServiceTypes =
-      ServiceTypes[(service as unknown) as string];
+      ServiceTypes[service as unknown as string];
     this.logger.log(serviceType);
 
     if (serviceType === ServiceTypes.Password) {
@@ -76,7 +76,7 @@ export class AccountsMutationResolver {
 
       return {
         id: auth.user.id.toString(),
-        user: (auth.user as unknown) as User,
+        user: auth.user as unknown as User,
       };
     }
 

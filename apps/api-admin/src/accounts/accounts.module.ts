@@ -1,7 +1,6 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { CookieSerializer } from '@ultimatebackend/common';
 import { PassportModule } from '@nestjs/passport';
-import { Response } from 'express';
 import { AccountsResolver } from './accounts.resolver';
 import { AccountsService } from './accounts.service';
 import { AccountsController } from './accounts.controller';
@@ -51,7 +50,7 @@ export class AccountsModule implements NestModule {
           next();
         },
         passport.authenticate('facebook', facebookLoginOptions),
-        (req, res: Response) => {
+        (req: any, res: any) => {
           res.redirect('https://ultimatebackend.io');
         },
       )
@@ -67,7 +66,7 @@ export class AccountsModule implements NestModule {
           next();
         },
         passport.authenticate('google', facebookLoginOptions),
-        (req, res: Response) => {
+        (req: any, res: any) => {
           res.redirect('https://ultimatebackend.io');
         },
       )
@@ -83,7 +82,7 @@ export class AccountsModule implements NestModule {
           next();
         },
         passport.authenticate('github', facebookLoginOptions),
-        (req, res: Response) => {
+        (req: any, res: any) => {
           res.redirect('https://ultimatebackend.io');
         },
       )

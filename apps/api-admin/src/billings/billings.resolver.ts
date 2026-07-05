@@ -34,7 +34,7 @@ export class BillingsResolver {
     const result = await ctx?.rpc?.billing?.svc
       .readInvoice({ id }, setRpcContext(ctx))
       .toPromise();
-    return (result.invoice as unknown) as Invoice;
+    return result.invoice as unknown as Invoice;
   }
 
   @UseGuards(GqlAuthGuard)
@@ -49,7 +49,7 @@ export class BillingsResolver {
     const result = await ctx?.rpc?.billing?.svc
       .findInvoices({}, setRpcContext(ctx))
       .toPromise();
-    return (result.invoices as unknown) as Invoice[];
+    return result.invoices as unknown as Invoice[];
   }
 
   @Mutation(() => BillingMutations, { nullable: true })
@@ -73,7 +73,7 @@ export class BillingsResolver {
     const result = await ctx?.rpc?.billing?.svc
       .readSubscription({ id, tenantId }, setRpcContext(ctx))
       .toPromise();
-    return (result.subscription as unknown) as TenantSubscription;
+    return result.subscription as unknown as TenantSubscription;
   }
 
   @UseGuards(GqlAuthGuard)
@@ -96,6 +96,6 @@ export class BillingsResolver {
         setRpcContext(ctx),
       )
       .toPromise();
-    return (result.subscriptions as unknown) as TenantSubscription[];
+    return result.subscriptions as unknown as TenantSubscription[];
   }
 }

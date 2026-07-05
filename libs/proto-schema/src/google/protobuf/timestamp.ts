@@ -1,5 +1,5 @@
 /* eslint-disable */
-import * as Long from 'long';
+import Long = require('long');
 import { Writer, Reader } from 'protobufjs/minimal';
 
 /**

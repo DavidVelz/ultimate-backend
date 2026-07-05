@@ -24,7 +24,7 @@ import {
 } from '../../../interfaces';
 import { cleanEmptyProperties, NotFoundError } from '@ultimatebackend/common';
 import { DateTime } from 'luxon';
-import { merge } from 'lodash';
+import merge = require('lodash/merge');
 
 // that class only can be extended
 export class BaseMongoRepository<DOC, DTO = DOC> {

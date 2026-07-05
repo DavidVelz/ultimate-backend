@@ -4,7 +4,8 @@ import { WebhookCreatedEvent } from '../../impl';
 
 @EventsHandler(WebhookCreatedEvent)
 export class WebhookCreatedHandler
-  implements IEventHandler<WebhookCreatedEvent> {
+  implements IEventHandler<WebhookCreatedEvent>
+{
   handle(event: WebhookCreatedEvent): any {
     Logger.log(event, 'WebhookCreatedEvent'); // write here
   }

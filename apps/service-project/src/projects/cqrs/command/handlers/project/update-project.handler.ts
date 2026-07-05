@@ -12,7 +12,8 @@ import {
 
 @CommandHandler(UpdateProjectCommand)
 export class UpdateProjectHandler
-  implements ICommandHandler<UpdateProjectCommand> {
+  implements ICommandHandler<UpdateProjectCommand>
+{
   logger = new Logger(this.constructor.name);
   projectRepository: ProjectRepository;
 
@@ -49,7 +50,7 @@ export class UpdateProjectHandler
       await this.eventBus.publish(new ProjectUpdatedEvent(project));
 
       return {
-        project: (project as unknown) as Project,
+        project: project as unknown as Project,
       };
     } catch (error) {
       this.logger.log(error);

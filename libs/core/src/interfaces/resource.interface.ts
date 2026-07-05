@@ -1,11 +1,11 @@
 import { IPermission } from '../';
 
 export class IResource {
-  name: string;
+  name?: string;
   supportsToken?: boolean;
-  roles: InAppRole[];
-  readonly identify: string;
-  action: 'create' | 'read' | 'update' | 'delete';
+  roles?: InAppRole[];
+  readonly identify! : string;
+  action?: 'create' | 'read' | 'update' | 'delete';
 }
 
 export type InAppRole =

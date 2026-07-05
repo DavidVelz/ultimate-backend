@@ -5,7 +5,7 @@ import { ArgsDictionary } from './resolver-data';
 export interface ResolverFilterData<
   TPayload = any,
   TArgs = ArgsDictionary,
-  TContext = {}
+  TContext = {},
 > {
   payload: TPayload;
   args: TArgs;

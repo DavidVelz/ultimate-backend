@@ -5,7 +5,7 @@ import { TenantInfo } from '@ultimatebackend/core/mutiltenancy';
 
 export function setRpcContext(ctx: GqlContext, inApp?: boolean): Metadata {
   const meta = new Metadata();
-  meta.set('headers', JSON.stringify(ctx.req.headers));
+  meta.set('headers', JSON.stringify((ctx.req as any).headers));
 
   if (ctx.isAuthenticated()) {
     meta.set('user', JSON.stringify(ctx.getUser()));
@@ -23,9 +23,12 @@ export function setRpcContext(ctx: GqlContext, inApp?: boolean): Metadata {
   return meta;
 }
 
-export function getIdentityFromCtx(
-  meta: Metadata,
-): { user: UserEntity; tenant: TenantEntity; tenantInfo: TenantInfo; inApp } {
+export function getIdentityFromCtx(meta: Metadata): {
+  user: UserEntity;
+  tenant: TenantEntity;
+  tenantInfo: TenantInfo;
+  inApp;
+} {
   const gmap = meta.getMap();
   const tempUser = gmap.user;
   const tempInApp = gmap.inapp;

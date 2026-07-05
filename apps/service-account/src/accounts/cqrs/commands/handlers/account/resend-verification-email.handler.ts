@@ -15,7 +15,8 @@ import { JwtService } from '@nestjs/jwt';
  */
 @CommandHandler(ResendVerificationEmailCommand)
 export class ResendVerificationEmailHandler
-  implements ICommandHandler<ResendVerificationEmailCommand> {
+  implements ICommandHandler<ResendVerificationEmailCommand>
+{
   logger = new Logger(this.constructor.name);
   constructor(
     private readonly userRepository: UserRepository,

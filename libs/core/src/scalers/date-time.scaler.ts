@@ -4,7 +4,8 @@ import * as moment from 'moment';
 
 @Scalar('Timestamp', (type) => Date)
 export class TimestampScalar
-  implements CustomScalar<number | string | Date, Date> {
+  implements CustomScalar<number | string | Date, Date>
+{
   description = 'Date custom scalar type';
 
   parseValue(value: number | string | Date): Date {

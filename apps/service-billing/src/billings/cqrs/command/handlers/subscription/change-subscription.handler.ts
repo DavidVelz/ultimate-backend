@@ -10,7 +10,8 @@ import { subsToProtoStripeSubs } from '../../../../../common';
 
 @CommandHandler(ChangeSubscriptionCommand)
 export class ChangeSubscriptionHandler
-  implements ICommandHandler<ChangeSubscriptionCommand> {
+  implements ICommandHandler<ChangeSubscriptionCommand>
+{
   logger = new Logger(this.constructor.name);
 
   public constructor(

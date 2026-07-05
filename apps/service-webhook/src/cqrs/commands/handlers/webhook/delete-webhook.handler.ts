@@ -14,7 +14,8 @@ import { mapWebhookEntityToProto } from '../../../../utitlity';
  */
 @CommandHandler(DeleteWebhookCommand)
 export class DeleteWebhookHandler
-  implements ICommandHandler<DeleteWebhookCommand> {
+  implements ICommandHandler<DeleteWebhookCommand>
+{
   logger = new Logger(this.constructor.name);
   repo: WebhookRepository;
 

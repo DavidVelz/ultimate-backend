@@ -12,10 +12,10 @@
 #     --ts_out="service=grpc-node:${OUT_DIR}" \
 #     ./apps/service-*/src/proto/*.proto
 
-SRC_DIR="./libs/proto-schema/src/proto/*.proto"
+SRC_DIR="./libs/proto-schema/src/proto/account.proto"
 DEST_DIR="./libs/proto-schema/src"
 
-protoc --plugin=node_modules/ts-proto/protoc-gen-ts_proto --ts_proto_opt=outputEncodeMethods=true,useEnumNames=false,asClass=false,outputJsonMethods=true,context=true,outputNestJs=true,outputClientImpl=false --ts_proto_out=${DEST_DIR} ${SRC_DIR}
+protoc --plugin=protoc-gen-ts_proto=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_opt=outputNestJs=true --ts_proto_out=./libs/proto-schema/src ./libs/proto-schema/src/proto/account.proto
 
 # protobuf.js
 # node_modules/.bin/pbjs \

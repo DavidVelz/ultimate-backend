@@ -49,7 +49,10 @@ export class LoginUserHandler implements ICommandHandler<LoginUserCommand> {
 
       if (cmd && cmd.service === LoginServiceTypes.Password) {
         if (
-          !validPassword(cmd?.params?.password, user?.services?.password?.hashed)
+          !validPassword(
+            cmd?.params?.password,
+            user?.services?.password?.hashed,
+          )
         ) {
           throw new ValidationError('Your login credentials is incorrect');
         }
@@ -91,7 +94,9 @@ function getLoginQuery(cmd: LoginRequest) {
     return {
       $and: [
         {
-          emails: { $elemMatch: { address: cmd?.params?.email, primary: true } },
+          emails: {
+            $elemMatch: { address: cmd?.params?.email, primary: true },
+          },
         },
         { 'services.github.userId': cmd?.params?.userId },
       ],

@@ -210,7 +210,7 @@ export class CardsService {
         customerId,
         { object: 'card' },
       );
-      const cardsList = (cardObjs.data as unknown) as Stripe.cards.ICard[];
+      const cardsList = cardObjs.data as unknown as Stripe.cards.ICard[];
 
       return {
         cards: cardSliceToProtoCardSlice(
