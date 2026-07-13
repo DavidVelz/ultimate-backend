@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { RolesModule } from './roles/roles.module';
 import { NestCasbinModule } from 'nestjs-casbin';
 import { CasbinUserConfigService } from './casbin-config';
@@ -17,7 +15,7 @@ import { AdapterProviderModule } from './adapter.provider';
     }),
     RolesModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

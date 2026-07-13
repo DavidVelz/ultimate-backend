@@ -118,6 +118,7 @@ export class RolesController implements RoleService<any> {
         return rsp;
       }
     } catch (e) {
+      console.log('error', e);
       throw new Error(e);
     }
   }
