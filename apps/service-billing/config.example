@@ -4,7 +4,7 @@ billing:
     name: "srv-billing"
 
 stripe:
-  apiKey: "sk_test_51TsFbBKmtFI4xcW14ZD0ekKSm5zvaDKfnmutknlxwhb6PfRwt6d4gfR8KIka1qVKPwQgCco1DYMXIDBTXiQoslDY00geuu0aQT"
+  apiKey: "..."
 
 database:
   mongodb:
