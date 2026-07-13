@@ -9,13 +9,14 @@ export class IdentifyMachineUtils {
   constructor(readonly req: IRequest) {}
 
   sender() {
-    const ip =
-      this.req.headers['x-forwarded-for'] || this.req.connection.remoteAddress;
+    const headers = this.req?.headers || {};
+    const connection = this.req?.connection || {};
+    const ip = headers['x-forwarded-for'] || connection.remoteAddress || 'unknown';
     Logger.log(ip, this.constructor.name);
     // const address = new Address6(ip);
-
+    
     return {
-      ip: 'free',
+      ip,
       userAgent: 'free',
     };
 

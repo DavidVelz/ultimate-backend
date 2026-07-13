@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  eventstore:
+    image: eventstore/eventstore:release-5.0.8
+    container_name: eventstore
+    restart: unless-stopped
+    environment:
+      EVENTSTORE_DEV: "true"
+      EVENTSTORE_INSECURE: "true"
+      EVENTSTORE_RUN_PROJECTIONS: All
+      EVENTSTORE_START_STANDARD_PROJECTIONS: "true"
+    ports:
+      - "1113:1113"
+      - "2113:2113"
+    volumes:
+      - eventstore-data:/var/lib/eventstore
+
+volumes:
+  eventstore-data:

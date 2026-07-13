@@ -79,6 +79,6 @@ export class GqlConfigService implements GqlOptionsFactory {
           'request.credentials': 'same-origin',
         },
       },
-    } as unknown as GqlModuleOptions; 
+    } as unknown as GqlModuleOptions;
   }
 }

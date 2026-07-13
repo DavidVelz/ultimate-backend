@@ -5,9 +5,9 @@
 // source: libs/proto-schema/src/proto/webhook.proto
 
 /* eslint-disable */
-import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import { BinaryReader, BinaryWriter } from '@bufbuild/protobuf/wire';
 
-export const protobufPackage = "io.ultimatebackend.srv.webhook";
+export const protobufPackage = 'io.ultimatebackend.srv.webhook';
 
 export enum WebhookRequestType {
   POST = 0,
@@ -21,22 +21,22 @@ export enum WebhookRequestType {
 export function webhookRequestTypeFromJSON(object: any): WebhookRequestType {
   switch (object) {
     case 0:
-    case "POST":
+    case 'POST':
       return WebhookRequestType.POST;
     case 1:
-    case "GET":
+    case 'GET':
       return WebhookRequestType.GET;
     case 2:
-    case "PUT":
+    case 'PUT':
       return WebhookRequestType.PUT;
     case 3:
-    case "DELETE":
+    case 'DELETE':
       return WebhookRequestType.DELETE;
     case 4:
-    case "PATCH":
+    case 'PATCH':
       return WebhookRequestType.PATCH;
     case -1:
-    case "UNRECOGNIZED":
+    case 'UNRECOGNIZED':
     default:
       return WebhookRequestType.UNRECOGNIZED;
   }
@@ -45,18 +45,18 @@ export function webhookRequestTypeFromJSON(object: any): WebhookRequestType {
 export function webhookRequestTypeToJSON(object: WebhookRequestType): string {
   switch (object) {
     case WebhookRequestType.POST:
-      return "POST";
+      return 'POST';
     case WebhookRequestType.GET:
-      return "GET";
+      return 'GET';
     case WebhookRequestType.PUT:
-      return "PUT";
+      return 'PUT';
     case WebhookRequestType.DELETE:
-      return "DELETE";
+      return 'DELETE';
     case WebhookRequestType.PATCH:
-      return "PATCH";
+      return 'PATCH';
     case WebhookRequestType.UNRECOGNIZED:
     default:
-      return "UNRECOGNIZED";
+      return 'UNRECOGNIZED';
   }
 }
 
@@ -72,22 +72,22 @@ export enum WebhookAuthType {
 export function webhookAuthTypeFromJSON(object: any): WebhookAuthType {
   switch (object) {
     case 0:
-    case "NONE":
+    case 'NONE':
       return WebhookAuthType.NONE;
     case 1:
-    case "BASIC":
+    case 'BASIC':
       return WebhookAuthType.BASIC;
     case 2:
-    case "API_KEY":
+    case 'API_KEY':
       return WebhookAuthType.API_KEY;
     case 3:
-    case "TOKEN":
+    case 'TOKEN':
       return WebhookAuthType.TOKEN;
     case 4:
-    case "OAUTH_2":
+    case 'OAUTH_2':
       return WebhookAuthType.OAUTH_2;
     case -1:
-    case "UNRECOGNIZED":
+    case 'UNRECOGNIZED':
     default:
       return WebhookAuthType.UNRECOGNIZED;
   }
@@ -96,18 +96,18 @@ export function webhookAuthTypeFromJSON(object: any): WebhookAuthType {
 export function webhookAuthTypeToJSON(object: WebhookAuthType): string {
   switch (object) {
     case WebhookAuthType.NONE:
-      return "NONE";
+      return 'NONE';
     case WebhookAuthType.BASIC:
-      return "BASIC";
+      return 'BASIC';
     case WebhookAuthType.API_KEY:
-      return "API_KEY";
+      return 'API_KEY';
     case WebhookAuthType.TOKEN:
-      return "TOKEN";
+      return 'TOKEN';
     case WebhookAuthType.OAUTH_2:
-      return "OAUTH_2";
+      return 'OAUTH_2';
     case WebhookAuthType.UNRECOGNIZED:
     default:
-      return "UNRECOGNIZED";
+      return 'UNRECOGNIZED';
   }
 }
 
@@ -120,13 +120,13 @@ export enum ApiKeyField {
 export function apiKeyFieldFromJSON(object: any): ApiKeyField {
   switch (object) {
     case 0:
-    case "HEADER":
+    case 'HEADER':
       return ApiKeyField.HEADER;
     case 1:
-    case "PARAMS":
+    case 'PARAMS':
       return ApiKeyField.PARAMS;
     case -1:
-    case "UNRECOGNIZED":
+    case 'UNRECOGNIZED':
     default:
       return ApiKeyField.UNRECOGNIZED;
   }
@@ -135,12 +135,12 @@ export function apiKeyFieldFromJSON(object: any): ApiKeyField {
 export function apiKeyFieldToJSON(object: ApiKeyField): string {
   switch (object) {
     case ApiKeyField.HEADER:
-      return "HEADER";
+      return 'HEADER';
     case ApiKeyField.PARAMS:
-      return "PARAMS";
+      return 'PARAMS';
     case ApiKeyField.UNRECOGNIZED:
     default:
-      return "UNRECOGNIZED";
+      return 'UNRECOGNIZED';
   }
 }
 
@@ -222,40 +222,53 @@ export interface FindWebhookResponse {
 }
 
 function createBaseAuth(): Auth {
-  return { type: "", identifier: "", addTo: "", key: "", value: "", token: "", username: "", password: "" };
+  return {
+    type: '',
+    identifier: '',
+    addTo: '',
+    key: '',
+    value: '',
+    token: '',
+    username: '',
+    password: '',
+  };
 }
 
 export const Auth: MessageFns<Auth> = {
-  encode(message: Auth, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.type !== "") {
+  encode(
+    message: Auth,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.type !== '') {
       writer.uint32(10).string(message.type);
     }
-    if (message.identifier !== "") {
+    if (message.identifier !== '') {
       writer.uint32(18).string(message.identifier);
     }
-    if (message.addTo !== "") {
+    if (message.addTo !== '') {
       writer.uint32(26).string(message.addTo);
     }
-    if (message.key !== "") {
+    if (message.key !== '') {
       writer.uint32(34).string(message.key);
     }
-    if (message.value !== "") {
+    if (message.value !== '') {
       writer.uint32(42).string(message.value);
     }
-    if (message.token !== "") {
+    if (message.token !== '') {
       writer.uint32(50).string(message.token);
     }
-    if (message.username !== "") {
+    if (message.username !== '') {
       writer.uint32(58).string(message.username);
     }
-    if (message.password !== "") {
+    if (message.password !== '') {
       writer.uint32(66).string(message.password);
     }
     return writer;
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): Auth {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAuth();
     while (reader.pos < end) {
@@ -336,41 +349,47 @@ export const Auth: MessageFns<Auth> = {
 
   fromJSON(object: any): Auth {
     return {
-      type: isSet(object.type) ? globalThis.String(object.type) : "",
-      identifier: isSet(object.identifier) ? globalThis.String(object.identifier) : "",
-      addTo: isSet(object.addTo) ? globalThis.String(object.addTo) : "",
-      key: isSet(object.key) ? globalThis.String(object.key) : "",
-      value: isSet(object.value) ? globalThis.String(object.value) : "",
-      token: isSet(object.token) ? globalThis.String(object.token) : "",
-      username: isSet(object.username) ? globalThis.String(object.username) : "",
-      password: isSet(object.password) ? globalThis.String(object.password) : "",
+      type: isSet(object.type) ? globalThis.String(object.type) : '',
+      identifier: isSet(object.identifier)
+        ? globalThis.String(object.identifier)
+        : '',
+      addTo: isSet(object.addTo) ? globalThis.String(object.addTo) : '',
+      key: isSet(object.key) ? globalThis.String(object.key) : '',
+      value: isSet(object.value) ? globalThis.String(object.value) : '',
+      token: isSet(object.token) ? globalThis.String(object.token) : '',
+      username: isSet(object.username)
+        ? globalThis.String(object.username)
+        : '',
+      password: isSet(object.password)
+        ? globalThis.String(object.password)
+        : '',
     };
   },
 
   toJSON(message: Auth): unknown {
     const obj: any = {};
-    if (message.type !== "") {
+    if (message.type !== '') {
       obj.type = message.type;
     }
-    if (message.identifier !== "") {
+    if (message.identifier !== '') {
       obj.identifier = message.identifier;
     }
-    if (message.addTo !== "") {
+    if (message.addTo !== '') {
       obj.addTo = message.addTo;
     }
-    if (message.key !== "") {
+    if (message.key !== '') {
       obj.key = message.key;
     }
-    if (message.value !== "") {
+    if (message.value !== '') {
       obj.value = message.value;
     }
-    if (message.token !== "") {
+    if (message.token !== '') {
       obj.token = message.token;
     }
-    if (message.username !== "") {
+    if (message.username !== '') {
       obj.username = message.username;
     }
-    if (message.password !== "") {
+    if (message.password !== '') {
       obj.password = message.password;
     }
     return obj;
@@ -381,14 +400,14 @@ export const Auth: MessageFns<Auth> = {
   },
   fromPartial<I extends Exact<DeepPartial<Auth>, I>>(object: I): Auth {
     const message = createBaseAuth();
-    message.type = object.type ?? "";
-    message.identifier = object.identifier ?? "";
-    message.addTo = object.addTo ?? "";
-    message.key = object.key ?? "";
-    message.value = object.value ?? "";
-    message.token = object.token ?? "";
-    message.username = object.username ?? "";
-    message.password = object.password ?? "";
+    message.type = object.type ?? '';
+    message.identifier = object.identifier ?? '';
+    message.addTo = object.addTo ?? '';
+    message.key = object.key ?? '';
+    message.value = object.value ?? '';
+    message.token = object.token ?? '';
+    message.username = object.username ?? '';
+    message.password = object.password ?? '';
     return message;
   },
 };
@@ -398,7 +417,10 @@ function createBasePaginate(): Paginate {
 }
 
 export const Paginate: MessageFns<Paginate> = {
-  encode(message: Paginate, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: Paginate,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.skip !== 0) {
       writer.uint32(8).int32(message.skip);
     }
@@ -409,7 +431,8 @@ export const Paginate: MessageFns<Paginate> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): Paginate {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePaginate();
     while (reader.pos < end) {
@@ -471,37 +494,40 @@ export const Paginate: MessageFns<Paginate> = {
 
 function createBaseWebhook(): Webhook {
   return {
-    id: "",
-    endpoint: "",
-    requestType: "",
-    createdAt: "",
-    updatedAt: "",
-    tenantId: "",
+    id: '',
+    endpoint: '',
+    requestType: '',
+    createdAt: '',
+    updatedAt: '',
+    tenantId: '',
     auth: undefined,
     active: false,
-    name: "",
-    action: "",
+    name: '',
+    action: '',
   };
 }
 
 export const Webhook: MessageFns<Webhook> = {
-  encode(message: Webhook, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.id !== "") {
+  encode(
+    message: Webhook,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.id !== '') {
       writer.uint32(10).string(message.id);
     }
-    if (message.endpoint !== "") {
+    if (message.endpoint !== '') {
       writer.uint32(18).string(message.endpoint);
     }
-    if (message.requestType !== "") {
+    if (message.requestType !== '') {
       writer.uint32(26).string(message.requestType);
     }
-    if (message.createdAt !== "") {
+    if (message.createdAt !== '') {
       writer.uint32(50).string(message.createdAt);
     }
-    if (message.updatedAt !== "") {
+    if (message.updatedAt !== '') {
       writer.uint32(58).string(message.updatedAt);
     }
-    if (message.tenantId !== "") {
+    if (message.tenantId !== '') {
       writer.uint32(66).string(message.tenantId);
     }
     if (message.auth !== undefined) {
@@ -510,17 +536,18 @@ export const Webhook: MessageFns<Webhook> = {
     if (message.active !== false) {
       writer.uint32(80).bool(message.active);
     }
-    if (message.name !== "") {
+    if (message.name !== '') {
       writer.uint32(90).string(message.name);
     }
-    if (message.action !== "") {
+    if (message.action !== '') {
       writer.uint32(98).string(message.action);
     }
     return writer;
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): Webhook {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseWebhook();
     while (reader.pos < end) {
@@ -617,37 +644,47 @@ export const Webhook: MessageFns<Webhook> = {
 
   fromJSON(object: any): Webhook {
     return {
-      id: isSet(object.id) ? globalThis.String(object.id) : "",
-      endpoint: isSet(object.endpoint) ? globalThis.String(object.endpoint) : "",
-      requestType: isSet(object.requestType) ? globalThis.String(object.requestType) : "",
-      createdAt: isSet(object.createdAt) ? globalThis.String(object.createdAt) : "",
-      updatedAt: isSet(object.updatedAt) ? globalThis.String(object.updatedAt) : "",
-      tenantId: isSet(object.tenantId) ? globalThis.String(object.tenantId) : "",
+      id: isSet(object.id) ? globalThis.String(object.id) : '',
+      endpoint: isSet(object.endpoint)
+        ? globalThis.String(object.endpoint)
+        : '',
+      requestType: isSet(object.requestType)
+        ? globalThis.String(object.requestType)
+        : '',
+      createdAt: isSet(object.createdAt)
+        ? globalThis.String(object.createdAt)
+        : '',
+      updatedAt: isSet(object.updatedAt)
+        ? globalThis.String(object.updatedAt)
+        : '',
+      tenantId: isSet(object.tenantId)
+        ? globalThis.String(object.tenantId)
+        : '',
       auth: isSet(object.auth) ? Auth.fromJSON(object.auth) : undefined,
       active: isSet(object.active) ? globalThis.Boolean(object.active) : false,
-      name: isSet(object.name) ? globalThis.String(object.name) : "",
-      action: isSet(object.action) ? globalThis.String(object.action) : "",
+      name: isSet(object.name) ? globalThis.String(object.name) : '',
+      action: isSet(object.action) ? globalThis.String(object.action) : '',
     };
   },
 
   toJSON(message: Webhook): unknown {
     const obj: any = {};
-    if (message.id !== "") {
+    if (message.id !== '') {
       obj.id = message.id;
     }
-    if (message.endpoint !== "") {
+    if (message.endpoint !== '') {
       obj.endpoint = message.endpoint;
     }
-    if (message.requestType !== "") {
+    if (message.requestType !== '') {
       obj.requestType = message.requestType;
     }
-    if (message.createdAt !== "") {
+    if (message.createdAt !== '') {
       obj.createdAt = message.createdAt;
     }
-    if (message.updatedAt !== "") {
+    if (message.updatedAt !== '') {
       obj.updatedAt = message.updatedAt;
     }
-    if (message.tenantId !== "") {
+    if (message.tenantId !== '') {
       obj.tenantId = message.tenantId;
     }
     if (message.auth !== undefined) {
@@ -656,10 +693,10 @@ export const Webhook: MessageFns<Webhook> = {
     if (message.active !== false) {
       obj.active = message.active;
     }
-    if (message.name !== "") {
+    if (message.name !== '') {
       obj.name = message.name;
     }
-    if (message.action !== "") {
+    if (message.action !== '') {
       obj.action = message.action;
     }
     return obj;
@@ -670,33 +707,39 @@ export const Webhook: MessageFns<Webhook> = {
   },
   fromPartial<I extends Exact<DeepPartial<Webhook>, I>>(object: I): Webhook {
     const message = createBaseWebhook();
-    message.id = object.id ?? "";
-    message.endpoint = object.endpoint ?? "";
-    message.requestType = object.requestType ?? "";
-    message.createdAt = object.createdAt ?? "";
-    message.updatedAt = object.updatedAt ?? "";
-    message.tenantId = object.tenantId ?? "";
-    message.auth = (object.auth !== undefined && object.auth !== null) ? Auth.fromPartial(object.auth) : undefined;
+    message.id = object.id ?? '';
+    message.endpoint = object.endpoint ?? '';
+    message.requestType = object.requestType ?? '';
+    message.createdAt = object.createdAt ?? '';
+    message.updatedAt = object.updatedAt ?? '';
+    message.tenantId = object.tenantId ?? '';
+    message.auth =
+      object.auth !== undefined && object.auth !== null
+        ? Auth.fromPartial(object.auth)
+        : undefined;
     message.active = object.active ?? false;
-    message.name = object.name ?? "";
-    message.action = object.action ?? "";
+    message.name = object.name ?? '';
+    message.action = object.action ?? '';
     return message;
   },
 };
 
 function createBaseCreateWebhookRequest(): CreateWebhookRequest {
-  return { name: "", endpoint: "", requestType: "", auth: undefined };
+  return { name: '', endpoint: '', requestType: '', auth: undefined };
 }
 
 export const CreateWebhookRequest: MessageFns<CreateWebhookRequest> = {
-  encode(message: CreateWebhookRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.name !== "") {
+  encode(
+    message: CreateWebhookRequest,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.name !== '') {
       writer.uint32(10).string(message.name);
     }
-    if (message.endpoint !== "") {
+    if (message.endpoint !== '') {
       writer.uint32(18).string(message.endpoint);
     }
-    if (message.requestType !== "") {
+    if (message.requestType !== '') {
       writer.uint32(26).string(message.requestType);
     }
     if (message.auth !== undefined) {
@@ -705,8 +748,12 @@ export const CreateWebhookRequest: MessageFns<CreateWebhookRequest> = {
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): CreateWebhookRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): CreateWebhookRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCreateWebhookRequest();
     while (reader.pos < end) {
@@ -755,22 +802,26 @@ export const CreateWebhookRequest: MessageFns<CreateWebhookRequest> = {
 
   fromJSON(object: any): CreateWebhookRequest {
     return {
-      name: isSet(object.name) ? globalThis.String(object.name) : "",
-      endpoint: isSet(object.endpoint) ? globalThis.String(object.endpoint) : "",
-      requestType: isSet(object.requestType) ? globalThis.String(object.requestType) : "",
+      name: isSet(object.name) ? globalThis.String(object.name) : '',
+      endpoint: isSet(object.endpoint)
+        ? globalThis.String(object.endpoint)
+        : '',
+      requestType: isSet(object.requestType)
+        ? globalThis.String(object.requestType)
+        : '',
       auth: isSet(object.auth) ? Auth.fromJSON(object.auth) : undefined,
     };
   },
 
   toJSON(message: CreateWebhookRequest): unknown {
     const obj: any = {};
-    if (message.name !== "") {
+    if (message.name !== '') {
       obj.name = message.name;
     }
-    if (message.endpoint !== "") {
+    if (message.endpoint !== '') {
       obj.endpoint = message.endpoint;
     }
-    if (message.requestType !== "") {
+    if (message.requestType !== '') {
       obj.requestType = message.requestType;
     }
     if (message.auth !== undefined) {
@@ -779,15 +830,22 @@ export const CreateWebhookRequest: MessageFns<CreateWebhookRequest> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<CreateWebhookRequest>, I>>(base?: I): CreateWebhookRequest {
+  create<I extends Exact<DeepPartial<CreateWebhookRequest>, I>>(
+    base?: I,
+  ): CreateWebhookRequest {
     return CreateWebhookRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<CreateWebhookRequest>, I>>(object: I): CreateWebhookRequest {
+  fromPartial<I extends Exact<DeepPartial<CreateWebhookRequest>, I>>(
+    object: I,
+  ): CreateWebhookRequest {
     const message = createBaseCreateWebhookRequest();
-    message.name = object.name ?? "";
-    message.endpoint = object.endpoint ?? "";
-    message.requestType = object.requestType ?? "";
-    message.auth = (object.auth !== undefined && object.auth !== null) ? Auth.fromPartial(object.auth) : undefined;
+    message.name = object.name ?? '';
+    message.endpoint = object.endpoint ?? '';
+    message.requestType = object.requestType ?? '';
+    message.auth =
+      object.auth !== undefined && object.auth !== null
+        ? Auth.fromPartial(object.auth)
+        : undefined;
     return message;
   },
 };
@@ -797,15 +855,22 @@ function createBaseCreateWebhookResponse(): CreateWebhookResponse {
 }
 
 export const CreateWebhookResponse: MessageFns<CreateWebhookResponse> = {
-  encode(message: CreateWebhookResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: CreateWebhookResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.webhook !== undefined) {
       Webhook.encode(message.webhook, writer.uint32(10).fork()).join();
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): CreateWebhookResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): CreateWebhookResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCreateWebhookResponse();
     while (reader.pos < end) {
@@ -829,7 +894,11 @@ export const CreateWebhookResponse: MessageFns<CreateWebhookResponse> = {
   },
 
   fromJSON(object: any): CreateWebhookResponse {
-    return { webhook: isSet(object.webhook) ? Webhook.fromJSON(object.webhook) : undefined };
+    return {
+      webhook: isSet(object.webhook)
+        ? Webhook.fromJSON(object.webhook)
+        : undefined,
+    };
   },
 
   toJSON(message: CreateWebhookResponse): unknown {
@@ -840,34 +909,42 @@ export const CreateWebhookResponse: MessageFns<CreateWebhookResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<CreateWebhookResponse>, I>>(base?: I): CreateWebhookResponse {
+  create<I extends Exact<DeepPartial<CreateWebhookResponse>, I>>(
+    base?: I,
+  ): CreateWebhookResponse {
     return CreateWebhookResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<CreateWebhookResponse>, I>>(object: I): CreateWebhookResponse {
+  fromPartial<I extends Exact<DeepPartial<CreateWebhookResponse>, I>>(
+    object: I,
+  ): CreateWebhookResponse {
     const message = createBaseCreateWebhookResponse();
-    message.webhook = (object.webhook !== undefined && object.webhook !== null)
-      ? Webhook.fromPartial(object.webhook)
-      : undefined;
+    message.webhook =
+      object.webhook !== undefined && object.webhook !== null
+        ? Webhook.fromPartial(object.webhook)
+        : undefined;
     return message;
   },
 };
 
 function createBaseUpdateWebhookRequest(): UpdateWebhookRequest {
-  return { id: "", name: "", endpoint: "", requestType: "", auth: undefined };
+  return { id: '', name: '', endpoint: '', requestType: '', auth: undefined };
 }
 
 export const UpdateWebhookRequest: MessageFns<UpdateWebhookRequest> = {
-  encode(message: UpdateWebhookRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.id !== "") {
+  encode(
+    message: UpdateWebhookRequest,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.id !== '') {
       writer.uint32(42).string(message.id);
     }
-    if (message.name !== "") {
+    if (message.name !== '') {
       writer.uint32(10).string(message.name);
     }
-    if (message.endpoint !== "") {
+    if (message.endpoint !== '') {
       writer.uint32(18).string(message.endpoint);
     }
-    if (message.requestType !== "") {
+    if (message.requestType !== '') {
       writer.uint32(26).string(message.requestType);
     }
     if (message.auth !== undefined) {
@@ -876,8 +953,12 @@ export const UpdateWebhookRequest: MessageFns<UpdateWebhookRequest> = {
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): UpdateWebhookRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): UpdateWebhookRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseUpdateWebhookRequest();
     while (reader.pos < end) {
@@ -934,26 +1015,30 @@ export const UpdateWebhookRequest: MessageFns<UpdateWebhookRequest> = {
 
   fromJSON(object: any): UpdateWebhookRequest {
     return {
-      id: isSet(object.id) ? globalThis.String(object.id) : "",
-      name: isSet(object.name) ? globalThis.String(object.name) : "",
-      endpoint: isSet(object.endpoint) ? globalThis.String(object.endpoint) : "",
-      requestType: isSet(object.requestType) ? globalThis.String(object.requestType) : "",
+      id: isSet(object.id) ? globalThis.String(object.id) : '',
+      name: isSet(object.name) ? globalThis.String(object.name) : '',
+      endpoint: isSet(object.endpoint)
+        ? globalThis.String(object.endpoint)
+        : '',
+      requestType: isSet(object.requestType)
+        ? globalThis.String(object.requestType)
+        : '',
       auth: isSet(object.auth) ? Auth.fromJSON(object.auth) : undefined,
     };
   },
 
   toJSON(message: UpdateWebhookRequest): unknown {
     const obj: any = {};
-    if (message.id !== "") {
+    if (message.id !== '') {
       obj.id = message.id;
     }
-    if (message.name !== "") {
+    if (message.name !== '') {
       obj.name = message.name;
     }
-    if (message.endpoint !== "") {
+    if (message.endpoint !== '') {
       obj.endpoint = message.endpoint;
     }
-    if (message.requestType !== "") {
+    if (message.requestType !== '') {
       obj.requestType = message.requestType;
     }
     if (message.auth !== undefined) {
@@ -962,16 +1047,23 @@ export const UpdateWebhookRequest: MessageFns<UpdateWebhookRequest> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<UpdateWebhookRequest>, I>>(base?: I): UpdateWebhookRequest {
+  create<I extends Exact<DeepPartial<UpdateWebhookRequest>, I>>(
+    base?: I,
+  ): UpdateWebhookRequest {
     return UpdateWebhookRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<UpdateWebhookRequest>, I>>(object: I): UpdateWebhookRequest {
+  fromPartial<I extends Exact<DeepPartial<UpdateWebhookRequest>, I>>(
+    object: I,
+  ): UpdateWebhookRequest {
     const message = createBaseUpdateWebhookRequest();
-    message.id = object.id ?? "";
-    message.name = object.name ?? "";
-    message.endpoint = object.endpoint ?? "";
-    message.requestType = object.requestType ?? "";
-    message.auth = (object.auth !== undefined && object.auth !== null) ? Auth.fromPartial(object.auth) : undefined;
+    message.id = object.id ?? '';
+    message.name = object.name ?? '';
+    message.endpoint = object.endpoint ?? '';
+    message.requestType = object.requestType ?? '';
+    message.auth =
+      object.auth !== undefined && object.auth !== null
+        ? Auth.fromPartial(object.auth)
+        : undefined;
     return message;
   },
 };
@@ -981,15 +1073,22 @@ function createBaseUpdateWebhookResponse(): UpdateWebhookResponse {
 }
 
 export const UpdateWebhookResponse: MessageFns<UpdateWebhookResponse> = {
-  encode(message: UpdateWebhookResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: UpdateWebhookResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.webhook !== undefined) {
       Webhook.encode(message.webhook, writer.uint32(10).fork()).join();
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): UpdateWebhookResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): UpdateWebhookResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseUpdateWebhookResponse();
     while (reader.pos < end) {
@@ -1013,7 +1112,11 @@ export const UpdateWebhookResponse: MessageFns<UpdateWebhookResponse> = {
   },
 
   fromJSON(object: any): UpdateWebhookResponse {
-    return { webhook: isSet(object.webhook) ? Webhook.fromJSON(object.webhook) : undefined };
+    return {
+      webhook: isSet(object.webhook)
+        ? Webhook.fromJSON(object.webhook)
+        : undefined,
+    };
   },
 
   toJSON(message: UpdateWebhookResponse): unknown {
@@ -1024,32 +1127,44 @@ export const UpdateWebhookResponse: MessageFns<UpdateWebhookResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<UpdateWebhookResponse>, I>>(base?: I): UpdateWebhookResponse {
+  create<I extends Exact<DeepPartial<UpdateWebhookResponse>, I>>(
+    base?: I,
+  ): UpdateWebhookResponse {
     return UpdateWebhookResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<UpdateWebhookResponse>, I>>(object: I): UpdateWebhookResponse {
+  fromPartial<I extends Exact<DeepPartial<UpdateWebhookResponse>, I>>(
+    object: I,
+  ): UpdateWebhookResponse {
     const message = createBaseUpdateWebhookResponse();
-    message.webhook = (object.webhook !== undefined && object.webhook !== null)
-      ? Webhook.fromPartial(object.webhook)
-      : undefined;
+    message.webhook =
+      object.webhook !== undefined && object.webhook !== null
+        ? Webhook.fromPartial(object.webhook)
+        : undefined;
     return message;
   },
 };
 
 function createBaseDeleteWebhookRequest(): DeleteWebhookRequest {
-  return { id: "" };
+  return { id: '' };
 }
 
 export const DeleteWebhookRequest: MessageFns<DeleteWebhookRequest> = {
-  encode(message: DeleteWebhookRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.id !== "") {
+  encode(
+    message: DeleteWebhookRequest,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.id !== '') {
       writer.uint32(10).string(message.id);
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): DeleteWebhookRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): DeleteWebhookRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseDeleteWebhookRequest();
     while (reader.pos < end) {
@@ -1073,23 +1188,27 @@ export const DeleteWebhookRequest: MessageFns<DeleteWebhookRequest> = {
   },
 
   fromJSON(object: any): DeleteWebhookRequest {
-    return { id: isSet(object.id) ? globalThis.String(object.id) : "" };
+    return { id: isSet(object.id) ? globalThis.String(object.id) : '' };
   },
 
   toJSON(message: DeleteWebhookRequest): unknown {
     const obj: any = {};
-    if (message.id !== "") {
+    if (message.id !== '') {
       obj.id = message.id;
     }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<DeleteWebhookRequest>, I>>(base?: I): DeleteWebhookRequest {
+  create<I extends Exact<DeepPartial<DeleteWebhookRequest>, I>>(
+    base?: I,
+  ): DeleteWebhookRequest {
     return DeleteWebhookRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<DeleteWebhookRequest>, I>>(object: I): DeleteWebhookRequest {
+  fromPartial<I extends Exact<DeepPartial<DeleteWebhookRequest>, I>>(
+    object: I,
+  ): DeleteWebhookRequest {
     const message = createBaseDeleteWebhookRequest();
-    message.id = object.id ?? "";
+    message.id = object.id ?? '';
     return message;
   },
 };
@@ -1099,15 +1218,22 @@ function createBaseDeleteWebhookResponse(): DeleteWebhookResponse {
 }
 
 export const DeleteWebhookResponse: MessageFns<DeleteWebhookResponse> = {
-  encode(message: DeleteWebhookResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: DeleteWebhookResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.webhook !== undefined) {
       Webhook.encode(message.webhook, writer.uint32(10).fork()).join();
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): DeleteWebhookResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): DeleteWebhookResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseDeleteWebhookResponse();
     while (reader.pos < end) {
@@ -1131,7 +1257,11 @@ export const DeleteWebhookResponse: MessageFns<DeleteWebhookResponse> = {
   },
 
   fromJSON(object: any): DeleteWebhookResponse {
-    return { webhook: isSet(object.webhook) ? Webhook.fromJSON(object.webhook) : undefined };
+    return {
+      webhook: isSet(object.webhook)
+        ? Webhook.fromJSON(object.webhook)
+        : undefined,
+    };
   },
 
   toJSON(message: DeleteWebhookResponse): unknown {
@@ -1142,32 +1272,44 @@ export const DeleteWebhookResponse: MessageFns<DeleteWebhookResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<DeleteWebhookResponse>, I>>(base?: I): DeleteWebhookResponse {
+  create<I extends Exact<DeepPartial<DeleteWebhookResponse>, I>>(
+    base?: I,
+  ): DeleteWebhookResponse {
     return DeleteWebhookResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<DeleteWebhookResponse>, I>>(object: I): DeleteWebhookResponse {
+  fromPartial<I extends Exact<DeepPartial<DeleteWebhookResponse>, I>>(
+    object: I,
+  ): DeleteWebhookResponse {
     const message = createBaseDeleteWebhookResponse();
-    message.webhook = (object.webhook !== undefined && object.webhook !== null)
-      ? Webhook.fromPartial(object.webhook)
-      : undefined;
+    message.webhook =
+      object.webhook !== undefined && object.webhook !== null
+        ? Webhook.fromPartial(object.webhook)
+        : undefined;
     return message;
   },
 };
 
 function createBaseReadWebhookRequest(): ReadWebhookRequest {
-  return { id: "" };
+  return { id: '' };
 }
 
 export const ReadWebhookRequest: MessageFns<ReadWebhookRequest> = {
-  encode(message: ReadWebhookRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.id !== "") {
+  encode(
+    message: ReadWebhookRequest,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.id !== '') {
       writer.uint32(10).string(message.id);
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): ReadWebhookRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): ReadWebhookRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseReadWebhookRequest();
     while (reader.pos < end) {
@@ -1191,23 +1333,27 @@ export const ReadWebhookRequest: MessageFns<ReadWebhookRequest> = {
   },
 
   fromJSON(object: any): ReadWebhookRequest {
-    return { id: isSet(object.id) ? globalThis.String(object.id) : "" };
+    return { id: isSet(object.id) ? globalThis.String(object.id) : '' };
   },
 
   toJSON(message: ReadWebhookRequest): unknown {
     const obj: any = {};
-    if (message.id !== "") {
+    if (message.id !== '') {
       obj.id = message.id;
     }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<ReadWebhookRequest>, I>>(base?: I): ReadWebhookRequest {
+  create<I extends Exact<DeepPartial<ReadWebhookRequest>, I>>(
+    base?: I,
+  ): ReadWebhookRequest {
     return ReadWebhookRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<ReadWebhookRequest>, I>>(object: I): ReadWebhookRequest {
+  fromPartial<I extends Exact<DeepPartial<ReadWebhookRequest>, I>>(
+    object: I,
+  ): ReadWebhookRequest {
     const message = createBaseReadWebhookRequest();
-    message.id = object.id ?? "";
+    message.id = object.id ?? '';
     return message;
   },
 };
@@ -1217,15 +1363,22 @@ function createBaseReadWebhookResponse(): ReadWebhookResponse {
 }
 
 export const ReadWebhookResponse: MessageFns<ReadWebhookResponse> = {
-  encode(message: ReadWebhookResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: ReadWebhookResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.webhook !== undefined) {
       Webhook.encode(message.webhook, writer.uint32(10).fork()).join();
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): ReadWebhookResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): ReadWebhookResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseReadWebhookResponse();
     while (reader.pos < end) {
@@ -1249,7 +1402,11 @@ export const ReadWebhookResponse: MessageFns<ReadWebhookResponse> = {
   },
 
   fromJSON(object: any): ReadWebhookResponse {
-    return { webhook: isSet(object.webhook) ? Webhook.fromJSON(object.webhook) : undefined };
+    return {
+      webhook: isSet(object.webhook)
+        ? Webhook.fromJSON(object.webhook)
+        : undefined,
+    };
   },
 
   toJSON(message: ReadWebhookResponse): unknown {
@@ -1260,25 +1417,33 @@ export const ReadWebhookResponse: MessageFns<ReadWebhookResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<ReadWebhookResponse>, I>>(base?: I): ReadWebhookResponse {
+  create<I extends Exact<DeepPartial<ReadWebhookResponse>, I>>(
+    base?: I,
+  ): ReadWebhookResponse {
     return ReadWebhookResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<ReadWebhookResponse>, I>>(object: I): ReadWebhookResponse {
+  fromPartial<I extends Exact<DeepPartial<ReadWebhookResponse>, I>>(
+    object: I,
+  ): ReadWebhookResponse {
     const message = createBaseReadWebhookResponse();
-    message.webhook = (object.webhook !== undefined && object.webhook !== null)
-      ? Webhook.fromPartial(object.webhook)
-      : undefined;
+    message.webhook =
+      object.webhook !== undefined && object.webhook !== null
+        ? Webhook.fromPartial(object.webhook)
+        : undefined;
     return message;
   },
 };
 
 function createBaseFindWebhookRequest(): FindWebhookRequest {
-  return { filter: "", paginate: undefined };
+  return { filter: '', paginate: undefined };
 }
 
 export const FindWebhookRequest: MessageFns<FindWebhookRequest> = {
-  encode(message: FindWebhookRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.filter !== "") {
+  encode(
+    message: FindWebhookRequest,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.filter !== '') {
       writer.uint32(10).string(message.filter);
     }
     if (message.paginate !== undefined) {
@@ -1287,8 +1452,12 @@ export const FindWebhookRequest: MessageFns<FindWebhookRequest> = {
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): FindWebhookRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): FindWebhookRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseFindWebhookRequest();
     while (reader.pos < end) {
@@ -1321,14 +1490,16 @@ export const FindWebhookRequest: MessageFns<FindWebhookRequest> = {
 
   fromJSON(object: any): FindWebhookRequest {
     return {
-      filter: isSet(object.filter) ? globalThis.String(object.filter) : "",
-      paginate: isSet(object.paginate) ? Paginate.fromJSON(object.paginate) : undefined,
+      filter: isSet(object.filter) ? globalThis.String(object.filter) : '',
+      paginate: isSet(object.paginate)
+        ? Paginate.fromJSON(object.paginate)
+        : undefined,
     };
   },
 
   toJSON(message: FindWebhookRequest): unknown {
     const obj: any = {};
-    if (message.filter !== "") {
+    if (message.filter !== '') {
       obj.filter = message.filter;
     }
     if (message.paginate !== undefined) {
@@ -1337,15 +1508,20 @@ export const FindWebhookRequest: MessageFns<FindWebhookRequest> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<FindWebhookRequest>, I>>(base?: I): FindWebhookRequest {
+  create<I extends Exact<DeepPartial<FindWebhookRequest>, I>>(
+    base?: I,
+  ): FindWebhookRequest {
     return FindWebhookRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<FindWebhookRequest>, I>>(object: I): FindWebhookRequest {
+  fromPartial<I extends Exact<DeepPartial<FindWebhookRequest>, I>>(
+    object: I,
+  ): FindWebhookRequest {
     const message = createBaseFindWebhookRequest();
-    message.filter = object.filter ?? "";
-    message.paginate = (object.paginate !== undefined && object.paginate !== null)
-      ? Paginate.fromPartial(object.paginate)
-      : undefined;
+    message.filter = object.filter ?? '';
+    message.paginate =
+      object.paginate !== undefined && object.paginate !== null
+        ? Paginate.fromPartial(object.paginate)
+        : undefined;
     return message;
   },
 };
@@ -1355,15 +1531,22 @@ function createBaseFindWebhookResponse(): FindWebhookResponse {
 }
 
 export const FindWebhookResponse: MessageFns<FindWebhookResponse> = {
-  encode(message: FindWebhookResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: FindWebhookResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     for (const v of message.webhooks) {
       Webhook.encode(v!, writer.uint32(10).fork()).join();
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): FindWebhookResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): FindWebhookResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseFindWebhookResponse();
     while (reader.pos < end) {
@@ -1388,7 +1571,9 @@ export const FindWebhookResponse: MessageFns<FindWebhookResponse> = {
 
   fromJSON(object: any): FindWebhookResponse {
     return {
-      webhooks: globalThis.Array.isArray(object?.webhooks) ? object.webhooks.map((e: any) => Webhook.fromJSON(e)) : [],
+      webhooks: globalThis.Array.isArray(object?.webhooks)
+        ? object.webhooks.map((e: any) => Webhook.fromJSON(e))
+        : [],
     };
   },
 
@@ -1400,12 +1585,17 @@ export const FindWebhookResponse: MessageFns<FindWebhookResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<FindWebhookResponse>, I>>(base?: I): FindWebhookResponse {
+  create<I extends Exact<DeepPartial<FindWebhookResponse>, I>>(
+    base?: I,
+  ): FindWebhookResponse {
     return FindWebhookResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<FindWebhookResponse>, I>>(object: I): FindWebhookResponse {
+  fromPartial<I extends Exact<DeepPartial<FindWebhookResponse>, I>>(
+    object: I,
+  ): FindWebhookResponse {
     const message = createBaseFindWebhookResponse();
-    message.webhooks = object.webhooks?.map((e) => Webhook.fromPartial(e)) || [];
+    message.webhooks =
+      object.webhooks?.map((e) => Webhook.fromPartial(e)) || [];
     return message;
   },
 };
@@ -1418,7 +1608,8 @@ export interface WebhookService {
   FindWebhook(request: FindWebhookRequest): Promise<FindWebhookResponse>;
 }
 
-export const WebhookServiceServiceName = "io.ultimatebackend.srv.webhook.WebhookService";
+export const WebhookServiceServiceName =
+  'io.ultimatebackend.srv.webhook.WebhookService';
 export class WebhookServiceClientImpl implements WebhookService {
   private readonly rpc: Rpc;
   private readonly service: string;
@@ -1433,50 +1624,78 @@ export class WebhookServiceClientImpl implements WebhookService {
   }
   CreateWebhook(request: CreateWebhookRequest): Promise<CreateWebhookResponse> {
     const data = CreateWebhookRequest.encode(request).finish();
-    const promise = this.rpc.request(this.service, "CreateWebhook", data);
-    return promise.then((data) => CreateWebhookResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(this.service, 'CreateWebhook', data);
+    return promise.then((data) =>
+      CreateWebhookResponse.decode(new BinaryReader(data)),
+    );
   }
 
   UpdateWebhook(request: UpdateWebhookRequest): Promise<UpdateWebhookResponse> {
     const data = UpdateWebhookRequest.encode(request).finish();
-    const promise = this.rpc.request(this.service, "UpdateWebhook", data);
-    return promise.then((data) => UpdateWebhookResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(this.service, 'UpdateWebhook', data);
+    return promise.then((data) =>
+      UpdateWebhookResponse.decode(new BinaryReader(data)),
+    );
   }
 
   DeleteWebhook(request: DeleteWebhookRequest): Promise<DeleteWebhookResponse> {
     const data = DeleteWebhookRequest.encode(request).finish();
-    const promise = this.rpc.request(this.service, "DeleteWebhook", data);
-    return promise.then((data) => DeleteWebhookResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(this.service, 'DeleteWebhook', data);
+    return promise.then((data) =>
+      DeleteWebhookResponse.decode(new BinaryReader(data)),
+    );
   }
 
   ReadWebhook(request: ReadWebhookRequest): Promise<ReadWebhookResponse> {
     const data = ReadWebhookRequest.encode(request).finish();
-    const promise = this.rpc.request(this.service, "ReadWebhook", data);
-    return promise.then((data) => ReadWebhookResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(this.service, 'ReadWebhook', data);
+    return promise.then((data) =>
+      ReadWebhookResponse.decode(new BinaryReader(data)),
+    );
   }
 
   FindWebhook(request: FindWebhookRequest): Promise<FindWebhookResponse> {
     const data = FindWebhookRequest.encode(request).finish();
-    const promise = this.rpc.request(this.service, "FindWebhook", data);
-    return promise.then((data) => FindWebhookResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(this.service, 'FindWebhook', data);
+    return promise.then((data) =>
+      FindWebhookResponse.decode(new BinaryReader(data)),
+    );
   }
 }
 
 interface Rpc {
-  request(service: string, method: string, data: Uint8Array): Promise<Uint8Array>;
+  request(
+    service: string,
+    method: string,
+    data: Uint8Array,
+  ): Promise<Uint8Array>;
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin =
+  | Date
+  | Function
+  | Uint8Array
+  | string
+  | number
+  | boolean
+  | undefined;
 
-export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
-  : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
-  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+export type DeepPartial<T> = T extends Builtin
+  ? T
+  : T extends globalThis.Array<infer U>
+  ? globalThis.Array<DeepPartial<U>>
+  : T extends ReadonlyArray<infer U>
+  ? ReadonlyArray<DeepPartial<U>>
+  : T extends {}
+  ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
 
 type KeysOfUnion<T> = T extends T ? keyof T : never;
-export type Exact<P, I extends P> = P extends Builtin ? P
-  : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
+export type Exact<P, I extends P> = P extends Builtin
+  ? P
+  : P & { [K in keyof P]: Exact<P[K], I[K]> } & {
+      [K in Exclude<keyof I, KeysOfUnion<P>>]: never;
+    };
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

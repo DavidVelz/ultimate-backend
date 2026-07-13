@@ -4,7 +4,7 @@ export class IResource {
   name?: string;
   supportsToken?: boolean;
   roles?: InAppRole[];
-  readonly identify! : string;
+  readonly identify!: string;
   action?: 'create' | 'read' | 'update' | 'delete';
 }
 

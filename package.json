@@ -175,6 +175,7 @@
     "@types/passport-local": "^1.0.33",
     "@types/stripe": "^7.13.16",
     "@types/supertest": "^2.0.9",
+    "@types/uuid": "^11.0.0",
     "grpc-tools": "^1.13.1",
     "husky": "^4.2.5",
     "jest": "^26.2.2",

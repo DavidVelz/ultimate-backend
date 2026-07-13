@@ -12,7 +12,7 @@ export class JwtConfigService implements JwtOptionsFactory {
     );
     console.log(jwtConstants);
     return {
-      secret: jwtConstants.secret,
+      secret: 'jwtConstants.secret',
       signOptions: { expiresIn: '40000s' },
     };
   }

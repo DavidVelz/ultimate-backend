@@ -4,7 +4,7 @@ account:
     name: "notification-queue"
 
 sendgrid:
-  apiKey: "SG.*****************************************************"
+  apiKey: "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"
   sender: "ultimatebackend <no-reply@ultimatebackend.io>"
 
 database:

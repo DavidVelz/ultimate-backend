@@ -5,9 +5,9 @@
 // source: libs/proto-schema/src/proto/access.proto
 
 /* eslint-disable */
-import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import { BinaryReader, BinaryWriter } from '@bufbuild/protobuf/wire';
 
-export const protobufPackage = "io.ultimatebackend.srv.access";
+export const protobufPackage = 'io.ultimatebackend.srv.access';
 
 export interface Access {
   id: string;
@@ -71,52 +71,56 @@ export interface HasRightsResponse {
 
 function createBaseAccess(): Access {
   return {
-    id: "",
-    token: "",
-    tenantId: "",
+    id: '',
+    token: '',
+    tenantId: '',
     scopes: [],
-    name: "",
-    createdAt: "",
-    updatedAt: "",
+    name: '',
+    createdAt: '',
+    updatedAt: '',
     active: false,
-    createdBy: "",
+    createdBy: '',
   };
 }
 
 export const Access: MessageFns<Access> = {
-  encode(message: Access, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.id !== "") {
+  encode(
+    message: Access,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.id !== '') {
       writer.uint32(10).string(message.id);
     }
-    if (message.token !== "") {
+    if (message.token !== '') {
       writer.uint32(18).string(message.token);
     }
-    if (message.tenantId !== "") {
+    if (message.tenantId !== '') {
       writer.uint32(26).string(message.tenantId);
     }
     for (const v of message.scopes) {
       writer.uint32(34).string(v!);
     }
-    if (message.name !== "") {
+    if (message.name !== '') {
       writer.uint32(42).string(message.name);
     }
-    if (message.createdAt !== "") {
+    if (message.createdAt !== '') {
       writer.uint32(66).string(message.createdAt);
     }
-    if (message.updatedAt !== "") {
+    if (message.updatedAt !== '') {
       writer.uint32(74).string(message.updatedAt);
     }
     if (message.active !== false) {
       writer.uint32(80).bool(message.active);
     }
-    if (message.createdBy !== "") {
+    if (message.createdBy !== '') {
       writer.uint32(90).string(message.createdBy);
     }
     return writer;
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): Access {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAccess();
     while (reader.pos < end) {
@@ -205,45 +209,55 @@ export const Access: MessageFns<Access> = {
 
   fromJSON(object: any): Access {
     return {
-      id: isSet(object.id) ? globalThis.String(object.id) : "",
-      token: isSet(object.token) ? globalThis.String(object.token) : "",
-      tenantId: isSet(object.tenantId) ? globalThis.String(object.tenantId) : "",
-      scopes: globalThis.Array.isArray(object?.scopes) ? object.scopes.map((e: any) => globalThis.String(e)) : [],
-      name: isSet(object.name) ? globalThis.String(object.name) : "",
-      createdAt: isSet(object.createdAt) ? globalThis.String(object.createdAt) : "",
-      updatedAt: isSet(object.updatedAt) ? globalThis.String(object.updatedAt) : "",
+      id: isSet(object.id) ? globalThis.String(object.id) : '',
+      token: isSet(object.token) ? globalThis.String(object.token) : '',
+      tenantId: isSet(object.tenantId)
+        ? globalThis.String(object.tenantId)
+        : '',
+      scopes: globalThis.Array.isArray(object?.scopes)
+        ? object.scopes.map((e: any) => globalThis.String(e))
+        : [],
+      name: isSet(object.name) ? globalThis.String(object.name) : '',
+      createdAt: isSet(object.createdAt)
+        ? globalThis.String(object.createdAt)
+        : '',
+      updatedAt: isSet(object.updatedAt)
+        ? globalThis.String(object.updatedAt)
+        : '',
       active: isSet(object.active) ? globalThis.Boolean(object.active) : false,
-      createdBy: isSet(object.createdBy) ? globalThis.String(object.createdBy) : "",
+      createdBy: isSet(object.createdBy)
+        ? globalThis.String(object.createdBy)
+        : '',
     };
   },
 
   toJSON(message: Access): unknown {
     const obj: any = {};
-    if (message.id !== "") {
+    if (message.id !== '') {
       obj.id = message.id;
     }
-    if (message.token !== "") {
+    if (message.token !== '') {
       obj.token = message.token;
     }
-    if (message.tenantId !== "") {
+    if (message.tenantId !== '') {
       obj.tenantId = message.tenantId;
     }
     if (message.scopes?.length) {
       obj.scopes = message.scopes;
     }
-    if (message.name !== "") {
+    if (message.name !== '') {
       obj.name = message.name;
     }
-    if (message.createdAt !== "") {
+    if (message.createdAt !== '') {
       obj.createdAt = message.createdAt;
     }
-    if (message.updatedAt !== "") {
+    if (message.updatedAt !== '') {
       obj.updatedAt = message.updatedAt;
     }
     if (message.active !== false) {
       obj.active = message.active;
     }
-    if (message.createdBy !== "") {
+    if (message.createdBy !== '') {
       obj.createdBy = message.createdBy;
     }
     return obj;
@@ -254,42 +268,49 @@ export const Access: MessageFns<Access> = {
   },
   fromPartial<I extends Exact<DeepPartial<Access>, I>>(object: I): Access {
     const message = createBaseAccess();
-    message.id = object.id ?? "";
-    message.token = object.token ?? "";
-    message.tenantId = object.tenantId ?? "";
+    message.id = object.id ?? '';
+    message.token = object.token ?? '';
+    message.tenantId = object.tenantId ?? '';
     message.scopes = object.scopes?.map((e) => e) || [];
-    message.name = object.name ?? "";
-    message.createdAt = object.createdAt ?? "";
-    message.updatedAt = object.updatedAt ?? "";
+    message.name = object.name ?? '';
+    message.createdAt = object.createdAt ?? '';
+    message.updatedAt = object.updatedAt ?? '';
     message.active = object.active ?? false;
-    message.createdBy = object.createdBy ?? "";
+    message.createdBy = object.createdBy ?? '';
     return message;
   },
 };
 
 function createBaseCreateAccessRequest(): CreateAccessRequest {
-  return { tenantId: "", scopes: [], name: "", expireAt: "" };
+  return { tenantId: '', scopes: [], name: '', expireAt: '' };
 }
 
 export const CreateAccessRequest: MessageFns<CreateAccessRequest> = {
-  encode(message: CreateAccessRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.tenantId !== "") {
+  encode(
+    message: CreateAccessRequest,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.tenantId !== '') {
       writer.uint32(10).string(message.tenantId);
     }
     for (const v of message.scopes) {
       writer.uint32(18).string(v!);
     }
-    if (message.name !== "") {
+    if (message.name !== '') {
       writer.uint32(26).string(message.name);
     }
-    if (message.expireAt !== "") {
+    if (message.expireAt !== '') {
       writer.uint32(34).string(message.expireAt);
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): CreateAccessRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): CreateAccessRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCreateAccessRequest();
     while (reader.pos < end) {
@@ -338,39 +359,49 @@ export const CreateAccessRequest: MessageFns<CreateAccessRequest> = {
 
   fromJSON(object: any): CreateAccessRequest {
     return {
-      tenantId: isSet(object.tenantId) ? globalThis.String(object.tenantId) : "",
-      scopes: globalThis.Array.isArray(object?.scopes) ? object.scopes.map((e: any) => globalThis.String(e)) : [],
-      name: isSet(object.name) ? globalThis.String(object.name) : "",
-      expireAt: isSet(object.expireAt) ? globalThis.String(object.expireAt) : "",
+      tenantId: isSet(object.tenantId)
+        ? globalThis.String(object.tenantId)
+        : '',
+      scopes: globalThis.Array.isArray(object?.scopes)
+        ? object.scopes.map((e: any) => globalThis.String(e))
+        : [],
+      name: isSet(object.name) ? globalThis.String(object.name) : '',
+      expireAt: isSet(object.expireAt)
+        ? globalThis.String(object.expireAt)
+        : '',
     };
   },
 
   toJSON(message: CreateAccessRequest): unknown {
     const obj: any = {};
-    if (message.tenantId !== "") {
+    if (message.tenantId !== '') {
       obj.tenantId = message.tenantId;
     }
     if (message.scopes?.length) {
       obj.scopes = message.scopes;
     }
-    if (message.name !== "") {
+    if (message.name !== '') {
       obj.name = message.name;
     }
-    if (message.expireAt !== "") {
+    if (message.expireAt !== '') {
       obj.expireAt = message.expireAt;
     }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<CreateAccessRequest>, I>>(base?: I): CreateAccessRequest {
+  create<I extends Exact<DeepPartial<CreateAccessRequest>, I>>(
+    base?: I,
+  ): CreateAccessRequest {
     return CreateAccessRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<CreateAccessRequest>, I>>(object: I): CreateAccessRequest {
+  fromPartial<I extends Exact<DeepPartial<CreateAccessRequest>, I>>(
+    object: I,
+  ): CreateAccessRequest {
     const message = createBaseCreateAccessRequest();
-    message.tenantId = object.tenantId ?? "";
+    message.tenantId = object.tenantId ?? '';
     message.scopes = object.scopes?.map((e) => e) || [];
-    message.name = object.name ?? "";
-    message.expireAt = object.expireAt ?? "";
+    message.name = object.name ?? '';
+    message.expireAt = object.expireAt ?? '';
     return message;
   },
 };
@@ -380,15 +411,22 @@ function createBaseCreateAccessResponse(): CreateAccessResponse {
 }
 
 export const CreateAccessResponse: MessageFns<CreateAccessResponse> = {
-  encode(message: CreateAccessResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: CreateAccessResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.accessToken !== undefined) {
       Access.encode(message.accessToken, writer.uint32(10).fork()).join();
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): CreateAccessResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): CreateAccessResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCreateAccessResponse();
     while (reader.pos < end) {
@@ -412,7 +450,11 @@ export const CreateAccessResponse: MessageFns<CreateAccessResponse> = {
   },
 
   fromJSON(object: any): CreateAccessResponse {
-    return { accessToken: isSet(object.accessToken) ? Access.fromJSON(object.accessToken) : undefined };
+    return {
+      accessToken: isSet(object.accessToken)
+        ? Access.fromJSON(object.accessToken)
+        : undefined,
+    };
   },
 
   toJSON(message: CreateAccessResponse): unknown {
@@ -423,35 +465,47 @@ export const CreateAccessResponse: MessageFns<CreateAccessResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<CreateAccessResponse>, I>>(base?: I): CreateAccessResponse {
+  create<I extends Exact<DeepPartial<CreateAccessResponse>, I>>(
+    base?: I,
+  ): CreateAccessResponse {
     return CreateAccessResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<CreateAccessResponse>, I>>(object: I): CreateAccessResponse {
+  fromPartial<I extends Exact<DeepPartial<CreateAccessResponse>, I>>(
+    object: I,
+  ): CreateAccessResponse {
     const message = createBaseCreateAccessResponse();
-    message.accessToken = (object.accessToken !== undefined && object.accessToken !== null)
-      ? Access.fromPartial(object.accessToken)
-      : undefined;
+    message.accessToken =
+      object.accessToken !== undefined && object.accessToken !== null
+        ? Access.fromPartial(object.accessToken)
+        : undefined;
     return message;
   },
 };
 
 function createBaseDeleteAccessRequest(): DeleteAccessRequest {
-  return { id: "", tenantId: "" };
+  return { id: '', tenantId: '' };
 }
 
 export const DeleteAccessRequest: MessageFns<DeleteAccessRequest> = {
-  encode(message: DeleteAccessRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.id !== "") {
+  encode(
+    message: DeleteAccessRequest,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.id !== '') {
       writer.uint32(10).string(message.id);
     }
-    if (message.tenantId !== "") {
+    if (message.tenantId !== '') {
       writer.uint32(18).string(message.tenantId);
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): DeleteAccessRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): DeleteAccessRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseDeleteAccessRequest();
     while (reader.pos < end) {
@@ -484,29 +538,35 @@ export const DeleteAccessRequest: MessageFns<DeleteAccessRequest> = {
 
   fromJSON(object: any): DeleteAccessRequest {
     return {
-      id: isSet(object.id) ? globalThis.String(object.id) : "",
-      tenantId: isSet(object.tenantId) ? globalThis.String(object.tenantId) : "",
+      id: isSet(object.id) ? globalThis.String(object.id) : '',
+      tenantId: isSet(object.tenantId)
+        ? globalThis.String(object.tenantId)
+        : '',
     };
   },
 
   toJSON(message: DeleteAccessRequest): unknown {
     const obj: any = {};
-    if (message.id !== "") {
+    if (message.id !== '') {
       obj.id = message.id;
     }
-    if (message.tenantId !== "") {
+    if (message.tenantId !== '') {
       obj.tenantId = message.tenantId;
     }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<DeleteAccessRequest>, I>>(base?: I): DeleteAccessRequest {
+  create<I extends Exact<DeepPartial<DeleteAccessRequest>, I>>(
+    base?: I,
+  ): DeleteAccessRequest {
     return DeleteAccessRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<DeleteAccessRequest>, I>>(object: I): DeleteAccessRequest {
+  fromPartial<I extends Exact<DeepPartial<DeleteAccessRequest>, I>>(
+    object: I,
+  ): DeleteAccessRequest {
     const message = createBaseDeleteAccessRequest();
-    message.id = object.id ?? "";
-    message.tenantId = object.tenantId ?? "";
+    message.id = object.id ?? '';
+    message.tenantId = object.tenantId ?? '';
     return message;
   },
 };
@@ -516,15 +576,22 @@ function createBaseDeleteAccessResponse(): DeleteAccessResponse {
 }
 
 export const DeleteAccessResponse: MessageFns<DeleteAccessResponse> = {
-  encode(message: DeleteAccessResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: DeleteAccessResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.accessToken !== undefined) {
       Access.encode(message.accessToken, writer.uint32(10).fork()).join();
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): DeleteAccessResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): DeleteAccessResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseDeleteAccessResponse();
     while (reader.pos < end) {
@@ -548,7 +615,11 @@ export const DeleteAccessResponse: MessageFns<DeleteAccessResponse> = {
   },
 
   fromJSON(object: any): DeleteAccessResponse {
-    return { accessToken: isSet(object.accessToken) ? Access.fromJSON(object.accessToken) : undefined };
+    return {
+      accessToken: isSet(object.accessToken)
+        ? Access.fromJSON(object.accessToken)
+        : undefined,
+    };
   },
 
   toJSON(message: DeleteAccessResponse): unknown {
@@ -559,35 +630,44 @@ export const DeleteAccessResponse: MessageFns<DeleteAccessResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<DeleteAccessResponse>, I>>(base?: I): DeleteAccessResponse {
+  create<I extends Exact<DeepPartial<DeleteAccessResponse>, I>>(
+    base?: I,
+  ): DeleteAccessResponse {
     return DeleteAccessResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<DeleteAccessResponse>, I>>(object: I): DeleteAccessResponse {
+  fromPartial<I extends Exact<DeepPartial<DeleteAccessResponse>, I>>(
+    object: I,
+  ): DeleteAccessResponse {
     const message = createBaseDeleteAccessResponse();
-    message.accessToken = (object.accessToken !== undefined && object.accessToken !== null)
-      ? Access.fromPartial(object.accessToken)
-      : undefined;
+    message.accessToken =
+      object.accessToken !== undefined && object.accessToken !== null
+        ? Access.fromPartial(object.accessToken)
+        : undefined;
     return message;
   },
 };
 
 function createBaseReadAccessRequest(): ReadAccessRequest {
-  return { id: "", tenantId: "" };
+  return { id: '', tenantId: '' };
 }
 
 export const ReadAccessRequest: MessageFns<ReadAccessRequest> = {
-  encode(message: ReadAccessRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.id !== "") {
+  encode(
+    message: ReadAccessRequest,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.id !== '') {
       writer.uint32(10).string(message.id);
     }
-    if (message.tenantId !== "") {
+    if (message.tenantId !== '') {
       writer.uint32(18).string(message.tenantId);
     }
     return writer;
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): ReadAccessRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseReadAccessRequest();
     while (reader.pos < end) {
@@ -620,29 +700,35 @@ export const ReadAccessRequest: MessageFns<ReadAccessRequest> = {
 
   fromJSON(object: any): ReadAccessRequest {
     return {
-      id: isSet(object.id) ? globalThis.String(object.id) : "",
-      tenantId: isSet(object.tenantId) ? globalThis.String(object.tenantId) : "",
+      id: isSet(object.id) ? globalThis.String(object.id) : '',
+      tenantId: isSet(object.tenantId)
+        ? globalThis.String(object.tenantId)
+        : '',
     };
   },
 
   toJSON(message: ReadAccessRequest): unknown {
     const obj: any = {};
-    if (message.id !== "") {
+    if (message.id !== '') {
       obj.id = message.id;
     }
-    if (message.tenantId !== "") {
+    if (message.tenantId !== '') {
       obj.tenantId = message.tenantId;
     }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<ReadAccessRequest>, I>>(base?: I): ReadAccessRequest {
+  create<I extends Exact<DeepPartial<ReadAccessRequest>, I>>(
+    base?: I,
+  ): ReadAccessRequest {
     return ReadAccessRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<ReadAccessRequest>, I>>(object: I): ReadAccessRequest {
+  fromPartial<I extends Exact<DeepPartial<ReadAccessRequest>, I>>(
+    object: I,
+  ): ReadAccessRequest {
     const message = createBaseReadAccessRequest();
-    message.id = object.id ?? "";
-    message.tenantId = object.tenantId ?? "";
+    message.id = object.id ?? '';
+    message.tenantId = object.tenantId ?? '';
     return message;
   },
 };
@@ -652,15 +738,22 @@ function createBaseReadAccessResponse(): ReadAccessResponse {
 }
 
 export const ReadAccessResponse: MessageFns<ReadAccessResponse> = {
-  encode(message: ReadAccessResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: ReadAccessResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.accessToken !== undefined) {
       Access.encode(message.accessToken, writer.uint32(10).fork()).join();
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): ReadAccessResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): ReadAccessResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseReadAccessResponse();
     while (reader.pos < end) {
@@ -684,7 +777,11 @@ export const ReadAccessResponse: MessageFns<ReadAccessResponse> = {
   },
 
   fromJSON(object: any): ReadAccessResponse {
-    return { accessToken: isSet(object.accessToken) ? Access.fromJSON(object.accessToken) : undefined };
+    return {
+      accessToken: isSet(object.accessToken)
+        ? Access.fromJSON(object.accessToken)
+        : undefined,
+    };
   },
 
   toJSON(message: ReadAccessResponse): unknown {
@@ -695,35 +792,44 @@ export const ReadAccessResponse: MessageFns<ReadAccessResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<ReadAccessResponse>, I>>(base?: I): ReadAccessResponse {
+  create<I extends Exact<DeepPartial<ReadAccessResponse>, I>>(
+    base?: I,
+  ): ReadAccessResponse {
     return ReadAccessResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<ReadAccessResponse>, I>>(object: I): ReadAccessResponse {
+  fromPartial<I extends Exact<DeepPartial<ReadAccessResponse>, I>>(
+    object: I,
+  ): ReadAccessResponse {
     const message = createBaseReadAccessResponse();
-    message.accessToken = (object.accessToken !== undefined && object.accessToken !== null)
-      ? Access.fromPartial(object.accessToken)
-      : undefined;
+    message.accessToken =
+      object.accessToken !== undefined && object.accessToken !== null
+        ? Access.fromPartial(object.accessToken)
+        : undefined;
     return message;
   },
 };
 
 function createBaseFindAccessRequest(): FindAccessRequest {
-  return { filter: "", tenantId: "" };
+  return { filter: '', tenantId: '' };
 }
 
 export const FindAccessRequest: MessageFns<FindAccessRequest> = {
-  encode(message: FindAccessRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.filter !== "") {
+  encode(
+    message: FindAccessRequest,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.filter !== '') {
       writer.uint32(10).string(message.filter);
     }
-    if (message.tenantId !== "") {
+    if (message.tenantId !== '') {
       writer.uint32(18).string(message.tenantId);
     }
     return writer;
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): FindAccessRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseFindAccessRequest();
     while (reader.pos < end) {
@@ -756,29 +862,35 @@ export const FindAccessRequest: MessageFns<FindAccessRequest> = {
 
   fromJSON(object: any): FindAccessRequest {
     return {
-      filter: isSet(object.filter) ? globalThis.String(object.filter) : "",
-      tenantId: isSet(object.tenantId) ? globalThis.String(object.tenantId) : "",
+      filter: isSet(object.filter) ? globalThis.String(object.filter) : '',
+      tenantId: isSet(object.tenantId)
+        ? globalThis.String(object.tenantId)
+        : '',
     };
   },
 
   toJSON(message: FindAccessRequest): unknown {
     const obj: any = {};
-    if (message.filter !== "") {
+    if (message.filter !== '') {
       obj.filter = message.filter;
     }
-    if (message.tenantId !== "") {
+    if (message.tenantId !== '') {
       obj.tenantId = message.tenantId;
     }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<FindAccessRequest>, I>>(base?: I): FindAccessRequest {
+  create<I extends Exact<DeepPartial<FindAccessRequest>, I>>(
+    base?: I,
+  ): FindAccessRequest {
     return FindAccessRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<FindAccessRequest>, I>>(object: I): FindAccessRequest {
+  fromPartial<I extends Exact<DeepPartial<FindAccessRequest>, I>>(
+    object: I,
+  ): FindAccessRequest {
     const message = createBaseFindAccessRequest();
-    message.filter = object.filter ?? "";
-    message.tenantId = object.tenantId ?? "";
+    message.filter = object.filter ?? '';
+    message.tenantId = object.tenantId ?? '';
     return message;
   },
 };
@@ -788,15 +900,22 @@ function createBaseFindAccessResponse(): FindAccessResponse {
 }
 
 export const FindAccessResponse: MessageFns<FindAccessResponse> = {
-  encode(message: FindAccessResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: FindAccessResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     for (const v of message.accessToken) {
       Access.encode(v!, writer.uint32(10).fork()).join();
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): FindAccessResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): FindAccessResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseFindAccessResponse();
     while (reader.pos < end) {
@@ -835,36 +954,45 @@ export const FindAccessResponse: MessageFns<FindAccessResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<FindAccessResponse>, I>>(base?: I): FindAccessResponse {
+  create<I extends Exact<DeepPartial<FindAccessResponse>, I>>(
+    base?: I,
+  ): FindAccessResponse {
     return FindAccessResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<FindAccessResponse>, I>>(object: I): FindAccessResponse {
+  fromPartial<I extends Exact<DeepPartial<FindAccessResponse>, I>>(
+    object: I,
+  ): FindAccessResponse {
     const message = createBaseFindAccessResponse();
-    message.accessToken = object.accessToken?.map((e) => Access.fromPartial(e)) || [];
+    message.accessToken =
+      object.accessToken?.map((e) => Access.fromPartial(e)) || [];
     return message;
   },
 };
 
 function createBaseHasRightsRequest(): HasRightsRequest {
-  return { token: "", scope: "", tenantId: "" };
+  return { token: '', scope: '', tenantId: '' };
 }
 
 export const HasRightsRequest: MessageFns<HasRightsRequest> = {
-  encode(message: HasRightsRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.token !== "") {
+  encode(
+    message: HasRightsRequest,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.token !== '') {
       writer.uint32(10).string(message.token);
     }
-    if (message.scope !== "") {
+    if (message.scope !== '') {
       writer.uint32(18).string(message.scope);
     }
-    if (message.tenantId !== "") {
+    if (message.tenantId !== '') {
       writer.uint32(26).string(message.tenantId);
     }
     return writer;
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): HasRightsRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseHasRightsRequest();
     while (reader.pos < end) {
@@ -905,34 +1033,40 @@ export const HasRightsRequest: MessageFns<HasRightsRequest> = {
 
   fromJSON(object: any): HasRightsRequest {
     return {
-      token: isSet(object.token) ? globalThis.String(object.token) : "",
-      scope: isSet(object.scope) ? globalThis.String(object.scope) : "",
-      tenantId: isSet(object.tenantId) ? globalThis.String(object.tenantId) : "",
+      token: isSet(object.token) ? globalThis.String(object.token) : '',
+      scope: isSet(object.scope) ? globalThis.String(object.scope) : '',
+      tenantId: isSet(object.tenantId)
+        ? globalThis.String(object.tenantId)
+        : '',
     };
   },
 
   toJSON(message: HasRightsRequest): unknown {
     const obj: any = {};
-    if (message.token !== "") {
+    if (message.token !== '') {
       obj.token = message.token;
     }
-    if (message.scope !== "") {
+    if (message.scope !== '') {
       obj.scope = message.scope;
     }
-    if (message.tenantId !== "") {
+    if (message.tenantId !== '') {
       obj.tenantId = message.tenantId;
     }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<HasRightsRequest>, I>>(base?: I): HasRightsRequest {
+  create<I extends Exact<DeepPartial<HasRightsRequest>, I>>(
+    base?: I,
+  ): HasRightsRequest {
     return HasRightsRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<HasRightsRequest>, I>>(object: I): HasRightsRequest {
+  fromPartial<I extends Exact<DeepPartial<HasRightsRequest>, I>>(
+    object: I,
+  ): HasRightsRequest {
     const message = createBaseHasRightsRequest();
-    message.token = object.token ?? "";
-    message.scope = object.scope ?? "";
-    message.tenantId = object.tenantId ?? "";
+    message.token = object.token ?? '';
+    message.scope = object.scope ?? '';
+    message.tenantId = object.tenantId ?? '';
     return message;
   },
 };
@@ -942,7 +1076,10 @@ function createBaseHasRightsResponse(): HasRightsResponse {
 }
 
 export const HasRightsResponse: MessageFns<HasRightsResponse> = {
-  encode(message: HasRightsResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: HasRightsResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.access !== false) {
       writer.uint32(8).bool(message.access);
     }
@@ -950,7 +1087,8 @@ export const HasRightsResponse: MessageFns<HasRightsResponse> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): HasRightsResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseHasRightsResponse();
     while (reader.pos < end) {
@@ -974,7 +1112,9 @@ export const HasRightsResponse: MessageFns<HasRightsResponse> = {
   },
 
   fromJSON(object: any): HasRightsResponse {
-    return { access: isSet(object.access) ? globalThis.Boolean(object.access) : false };
+    return {
+      access: isSet(object.access) ? globalThis.Boolean(object.access) : false,
+    };
   },
 
   toJSON(message: HasRightsResponse): unknown {
@@ -985,10 +1125,14 @@ export const HasRightsResponse: MessageFns<HasRightsResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<HasRightsResponse>, I>>(base?: I): HasRightsResponse {
+  create<I extends Exact<DeepPartial<HasRightsResponse>, I>>(
+    base?: I,
+  ): HasRightsResponse {
     return HasRightsResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<HasRightsResponse>, I>>(object: I): HasRightsResponse {
+  fromPartial<I extends Exact<DeepPartial<HasRightsResponse>, I>>(
+    object: I,
+  ): HasRightsResponse {
     const message = createBaseHasRightsResponse();
     message.access = object.access ?? false;
     return message;
@@ -1003,7 +1147,8 @@ export interface AccessService {
   HasRights(request: HasRightsRequest): Promise<HasRightsResponse>;
 }
 
-export const AccessServiceServiceName = "io.ultimatebackend.srv.access.AccessService";
+export const AccessServiceServiceName =
+  'io.ultimatebackend.srv.access.AccessService';
 export class AccessServiceClientImpl implements AccessService {
   private readonly rpc: Rpc;
   private readonly service: string;
@@ -1018,50 +1163,78 @@ export class AccessServiceClientImpl implements AccessService {
   }
   CreateAccess(request: CreateAccessRequest): Promise<CreateAccessResponse> {
     const data = CreateAccessRequest.encode(request).finish();
-    const promise = this.rpc.request(this.service, "CreateAccess", data);
-    return promise.then((data) => CreateAccessResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(this.service, 'CreateAccess', data);
+    return promise.then((data) =>
+      CreateAccessResponse.decode(new BinaryReader(data)),
+    );
   }
 
   DeleteAccess(request: DeleteAccessRequest): Promise<DeleteAccessResponse> {
     const data = DeleteAccessRequest.encode(request).finish();
-    const promise = this.rpc.request(this.service, "DeleteAccess", data);
-    return promise.then((data) => DeleteAccessResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(this.service, 'DeleteAccess', data);
+    return promise.then((data) =>
+      DeleteAccessResponse.decode(new BinaryReader(data)),
+    );
   }
 
   ReadAccess(request: ReadAccessRequest): Promise<ReadAccessResponse> {
     const data = ReadAccessRequest.encode(request).finish();
-    const promise = this.rpc.request(this.service, "ReadAccess", data);
-    return promise.then((data) => ReadAccessResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(this.service, 'ReadAccess', data);
+    return promise.then((data) =>
+      ReadAccessResponse.decode(new BinaryReader(data)),
+    );
   }
 
   FindAccess(request: FindAccessRequest): Promise<FindAccessResponse> {
     const data = FindAccessRequest.encode(request).finish();
-    const promise = this.rpc.request(this.service, "FindAccess", data);
-    return promise.then((data) => FindAccessResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(this.service, 'FindAccess', data);
+    return promise.then((data) =>
+      FindAccessResponse.decode(new BinaryReader(data)),
+    );
   }
 
   HasRights(request: HasRightsRequest): Promise<HasRightsResponse> {
     const data = HasRightsRequest.encode(request).finish();
-    const promise = this.rpc.request(this.service, "HasRights", data);
-    return promise.then((data) => HasRightsResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(this.service, 'HasRights', data);
+    return promise.then((data) =>
+      HasRightsResponse.decode(new BinaryReader(data)),
+    );
   }
 }
 
 interface Rpc {
-  request(service: string, method: string, data: Uint8Array): Promise<Uint8Array>;
+  request(
+    service: string,
+    method: string,
+    data: Uint8Array,
+  ): Promise<Uint8Array>;
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin =
+  | Date
+  | Function
+  | Uint8Array
+  | string
+  | number
+  | boolean
+  | undefined;
 
-export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
-  : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
-  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+export type DeepPartial<T> = T extends Builtin
+  ? T
+  : T extends globalThis.Array<infer U>
+  ? globalThis.Array<DeepPartial<U>>
+  : T extends ReadonlyArray<infer U>
+  ? ReadonlyArray<DeepPartial<U>>
+  : T extends {}
+  ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
 
 type KeysOfUnion<T> = T extends T ? keyof T : never;
-export type Exact<P, I extends P> = P extends Builtin ? P
-  : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
+export type Exact<P, I extends P> = P extends Builtin
+  ? P
+  : P & { [K in keyof P]: Exact<P[K], I[K]> } & {
+      [K in Exclude<keyof I, KeysOfUnion<P>>]: never;
+    };
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

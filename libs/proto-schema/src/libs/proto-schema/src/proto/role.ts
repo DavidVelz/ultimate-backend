@@ -5,9 +5,9 @@
 // source: libs/proto-schema/src/proto/role.proto
 
 /* eslint-disable */
-import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import { BinaryReader, BinaryWriter } from '@bufbuild/protobuf/wire';
 
-export const protobufPackage = "io.ultimatebackend.srv.role";
+export const protobufPackage = 'io.ultimatebackend.srv.role';
 
 export interface StringMessage {
   params: string[];
@@ -125,7 +125,10 @@ function createBaseStringMessage(): StringMessage {
 }
 
 export const StringMessage: MessageFns<StringMessage> = {
-  encode(message: StringMessage, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: StringMessage,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     for (const v of message.params) {
       writer.uint32(10).string(v!);
     }
@@ -133,7 +136,8 @@ export const StringMessage: MessageFns<StringMessage> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): StringMessage {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseStringMessage();
     while (reader.pos < end) {
@@ -158,7 +162,9 @@ export const StringMessage: MessageFns<StringMessage> = {
 
   fromJSON(object: any): StringMessage {
     return {
-      params: globalThis.Array.isArray(object?.params) ? object.params.map((e: any) => globalThis.String(e)) : [],
+      params: globalThis.Array.isArray(object?.params)
+        ? object.params.map((e: any) => globalThis.String(e))
+        : [],
     };
   },
 
@@ -170,10 +176,14 @@ export const StringMessage: MessageFns<StringMessage> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<StringMessage>, I>>(base?: I): StringMessage {
+  create<I extends Exact<DeepPartial<StringMessage>, I>>(
+    base?: I,
+  ): StringMessage {
     return StringMessage.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<StringMessage>, I>>(object: I): StringMessage {
+  fromPartial<I extends Exact<DeepPartial<StringMessage>, I>>(
+    object: I,
+  ): StringMessage {
     const message = createBaseStringMessage();
     message.params = object.params?.map((e) => e) || [];
     return message;
@@ -185,7 +195,10 @@ function createBaseBooleanPayload(): BooleanPayload {
 }
 
 export const BooleanPayload: MessageFns<BooleanPayload> = {
-  encode(message: BooleanPayload, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: BooleanPayload,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.success !== false) {
       writer.uint32(8).bool(message.success);
     }
@@ -193,7 +206,8 @@ export const BooleanPayload: MessageFns<BooleanPayload> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): BooleanPayload {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseBooleanPayload();
     while (reader.pos < end) {
@@ -217,7 +231,11 @@ export const BooleanPayload: MessageFns<BooleanPayload> = {
   },
 
   fromJSON(object: any): BooleanPayload {
-    return { success: isSet(object.success) ? globalThis.Boolean(object.success) : false };
+    return {
+      success: isSet(object.success)
+        ? globalThis.Boolean(object.success)
+        : false,
+    };
   },
 
   toJSON(message: BooleanPayload): unknown {
@@ -228,10 +246,14 @@ export const BooleanPayload: MessageFns<BooleanPayload> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<BooleanPayload>, I>>(base?: I): BooleanPayload {
+  create<I extends Exact<DeepPartial<BooleanPayload>, I>>(
+    base?: I,
+  ): BooleanPayload {
     return BooleanPayload.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<BooleanPayload>, I>>(object: I): BooleanPayload {
+  fromPartial<I extends Exact<DeepPartial<BooleanPayload>, I>>(
+    object: I,
+  ): BooleanPayload {
     const message = createBaseBooleanPayload();
     message.success = object.success ?? false;
     return message;
@@ -240,52 +262,56 @@ export const BooleanPayload: MessageFns<BooleanPayload> = {
 
 function createBaseRole(): Role {
   return {
-    id: "",
-    role: "",
-    domain: "",
-    resource: "",
-    action: "",
-    name: "",
-    normalizedName: "",
-    createdAt: "",
-    updatedAt: "",
+    id: '',
+    role: '',
+    domain: '',
+    resource: '',
+    action: '',
+    name: '',
+    normalizedName: '',
+    createdAt: '',
+    updatedAt: '',
   };
 }
 
 export const Role: MessageFns<Role> = {
-  encode(message: Role, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.id !== "") {
+  encode(
+    message: Role,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.id !== '') {
       writer.uint32(10).string(message.id);
     }
-    if (message.role !== "") {
+    if (message.role !== '') {
       writer.uint32(18).string(message.role);
     }
-    if (message.domain !== "") {
+    if (message.domain !== '') {
       writer.uint32(26).string(message.domain);
     }
-    if (message.resource !== "") {
+    if (message.resource !== '') {
       writer.uint32(34).string(message.resource);
     }
-    if (message.action !== "") {
+    if (message.action !== '') {
       writer.uint32(42).string(message.action);
     }
-    if (message.name !== "") {
+    if (message.name !== '') {
       writer.uint32(50).string(message.name);
     }
-    if (message.normalizedName !== "") {
+    if (message.normalizedName !== '') {
       writer.uint32(58).string(message.normalizedName);
     }
-    if (message.createdAt !== "") {
+    if (message.createdAt !== '') {
       writer.uint32(66).string(message.createdAt);
     }
-    if (message.updatedAt !== "") {
+    if (message.updatedAt !== '') {
       writer.uint32(74).string(message.updatedAt);
     }
     return writer;
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): Role {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseRole();
     while (reader.pos < end) {
@@ -374,45 +400,53 @@ export const Role: MessageFns<Role> = {
 
   fromJSON(object: any): Role {
     return {
-      id: isSet(object.id) ? globalThis.String(object.id) : "",
-      role: isSet(object.role) ? globalThis.String(object.role) : "",
-      domain: isSet(object.domain) ? globalThis.String(object.domain) : "",
-      resource: isSet(object.resource) ? globalThis.String(object.resource) : "",
-      action: isSet(object.action) ? globalThis.String(object.action) : "",
-      name: isSet(object.name) ? globalThis.String(object.name) : "",
-      normalizedName: isSet(object.normalizedName) ? globalThis.String(object.normalizedName) : "",
-      createdAt: isSet(object.createdAt) ? globalThis.String(object.createdAt) : "",
-      updatedAt: isSet(object.updatedAt) ? globalThis.String(object.updatedAt) : "",
+      id: isSet(object.id) ? globalThis.String(object.id) : '',
+      role: isSet(object.role) ? globalThis.String(object.role) : '',
+      domain: isSet(object.domain) ? globalThis.String(object.domain) : '',
+      resource: isSet(object.resource)
+        ? globalThis.String(object.resource)
+        : '',
+      action: isSet(object.action) ? globalThis.String(object.action) : '',
+      name: isSet(object.name) ? globalThis.String(object.name) : '',
+      normalizedName: isSet(object.normalizedName)
+        ? globalThis.String(object.normalizedName)
+        : '',
+      createdAt: isSet(object.createdAt)
+        ? globalThis.String(object.createdAt)
+        : '',
+      updatedAt: isSet(object.updatedAt)
+        ? globalThis.String(object.updatedAt)
+        : '',
     };
   },
 
   toJSON(message: Role): unknown {
     const obj: any = {};
-    if (message.id !== "") {
+    if (message.id !== '') {
       obj.id = message.id;
     }
-    if (message.role !== "") {
+    if (message.role !== '') {
       obj.role = message.role;
     }
-    if (message.domain !== "") {
+    if (message.domain !== '') {
       obj.domain = message.domain;
     }
-    if (message.resource !== "") {
+    if (message.resource !== '') {
       obj.resource = message.resource;
     }
-    if (message.action !== "") {
+    if (message.action !== '') {
       obj.action = message.action;
     }
-    if (message.name !== "") {
+    if (message.name !== '') {
       obj.name = message.name;
     }
-    if (message.normalizedName !== "") {
+    if (message.normalizedName !== '') {
       obj.normalizedName = message.normalizedName;
     }
-    if (message.createdAt !== "") {
+    if (message.createdAt !== '') {
       obj.createdAt = message.createdAt;
     }
-    if (message.updatedAt !== "") {
+    if (message.updatedAt !== '') {
       obj.updatedAt = message.updatedAt;
     }
     return obj;
@@ -423,39 +457,43 @@ export const Role: MessageFns<Role> = {
   },
   fromPartial<I extends Exact<DeepPartial<Role>, I>>(object: I): Role {
     const message = createBaseRole();
-    message.id = object.id ?? "";
-    message.role = object.role ?? "";
-    message.domain = object.domain ?? "";
-    message.resource = object.resource ?? "";
-    message.action = object.action ?? "";
-    message.name = object.name ?? "";
-    message.normalizedName = object.normalizedName ?? "";
-    message.createdAt = object.createdAt ?? "";
-    message.updatedAt = object.updatedAt ?? "";
+    message.id = object.id ?? '';
+    message.role = object.role ?? '';
+    message.domain = object.domain ?? '';
+    message.resource = object.resource ?? '';
+    message.action = object.action ?? '';
+    message.name = object.name ?? '';
+    message.normalizedName = object.normalizedName ?? '';
+    message.createdAt = object.createdAt ?? '';
+    message.updatedAt = object.updatedAt ?? '';
     return message;
   },
 };
 
 function createBaseUserRole(): UserRole {
-  return { userId: "", role: "", domain: "" };
+  return { userId: '', role: '', domain: '' };
 }
 
 export const UserRole: MessageFns<UserRole> = {
-  encode(message: UserRole, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.userId !== "") {
+  encode(
+    message: UserRole,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.userId !== '') {
       writer.uint32(10).string(message.userId);
     }
-    if (message.role !== "") {
+    if (message.role !== '') {
       writer.uint32(18).string(message.role);
     }
-    if (message.domain !== "") {
+    if (message.domain !== '') {
       writer.uint32(26).string(message.domain);
     }
     return writer;
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): UserRole {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseUserRole();
     while (reader.pos < end) {
@@ -496,21 +534,21 @@ export const UserRole: MessageFns<UserRole> = {
 
   fromJSON(object: any): UserRole {
     return {
-      userId: isSet(object.userId) ? globalThis.String(object.userId) : "",
-      role: isSet(object.role) ? globalThis.String(object.role) : "",
-      domain: isSet(object.domain) ? globalThis.String(object.domain) : "",
+      userId: isSet(object.userId) ? globalThis.String(object.userId) : '',
+      role: isSet(object.role) ? globalThis.String(object.role) : '',
+      domain: isSet(object.domain) ? globalThis.String(object.domain) : '',
     };
   },
 
   toJSON(message: UserRole): unknown {
     const obj: any = {};
-    if (message.userId !== "") {
+    if (message.userId !== '') {
       obj.userId = message.userId;
     }
-    if (message.role !== "") {
+    if (message.role !== '') {
       obj.role = message.role;
     }
-    if (message.domain !== "") {
+    if (message.domain !== '') {
       obj.domain = message.domain;
     }
     return obj;
@@ -521,36 +559,40 @@ export const UserRole: MessageFns<UserRole> = {
   },
   fromPartial<I extends Exact<DeepPartial<UserRole>, I>>(object: I): UserRole {
     const message = createBaseUserRole();
-    message.userId = object.userId ?? "";
-    message.role = object.role ?? "";
-    message.domain = object.domain ?? "";
+    message.userId = object.userId ?? '';
+    message.role = object.role ?? '';
+    message.domain = object.domain ?? '';
     return message;
   },
 };
 
 function createBaseCreateRoleRequest(): CreateRoleRequest {
-  return { role: "", domain: "", resource: "", action: "" };
+  return { role: '', domain: '', resource: '', action: '' };
 }
 
 export const CreateRoleRequest: MessageFns<CreateRoleRequest> = {
-  encode(message: CreateRoleRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.role !== "") {
+  encode(
+    message: CreateRoleRequest,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.role !== '') {
       writer.uint32(18).string(message.role);
     }
-    if (message.domain !== "") {
+    if (message.domain !== '') {
       writer.uint32(26).string(message.domain);
     }
-    if (message.resource !== "") {
+    if (message.resource !== '') {
       writer.uint32(34).string(message.resource);
     }
-    if (message.action !== "") {
+    if (message.action !== '') {
       writer.uint32(42).string(message.action);
     }
     return writer;
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): CreateRoleRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCreateRoleRequest();
     while (reader.pos < end) {
@@ -599,39 +641,45 @@ export const CreateRoleRequest: MessageFns<CreateRoleRequest> = {
 
   fromJSON(object: any): CreateRoleRequest {
     return {
-      role: isSet(object.role) ? globalThis.String(object.role) : "",
-      domain: isSet(object.domain) ? globalThis.String(object.domain) : "",
-      resource: isSet(object.resource) ? globalThis.String(object.resource) : "",
-      action: isSet(object.action) ? globalThis.String(object.action) : "",
+      role: isSet(object.role) ? globalThis.String(object.role) : '',
+      domain: isSet(object.domain) ? globalThis.String(object.domain) : '',
+      resource: isSet(object.resource)
+        ? globalThis.String(object.resource)
+        : '',
+      action: isSet(object.action) ? globalThis.String(object.action) : '',
     };
   },
 
   toJSON(message: CreateRoleRequest): unknown {
     const obj: any = {};
-    if (message.role !== "") {
+    if (message.role !== '') {
       obj.role = message.role;
     }
-    if (message.domain !== "") {
+    if (message.domain !== '') {
       obj.domain = message.domain;
     }
-    if (message.resource !== "") {
+    if (message.resource !== '') {
       obj.resource = message.resource;
     }
-    if (message.action !== "") {
+    if (message.action !== '') {
       obj.action = message.action;
     }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<CreateRoleRequest>, I>>(base?: I): CreateRoleRequest {
+  create<I extends Exact<DeepPartial<CreateRoleRequest>, I>>(
+    base?: I,
+  ): CreateRoleRequest {
     return CreateRoleRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<CreateRoleRequest>, I>>(object: I): CreateRoleRequest {
+  fromPartial<I extends Exact<DeepPartial<CreateRoleRequest>, I>>(
+    object: I,
+  ): CreateRoleRequest {
     const message = createBaseCreateRoleRequest();
-    message.role = object.role ?? "";
-    message.domain = object.domain ?? "";
-    message.resource = object.resource ?? "";
-    message.action = object.action ?? "";
+    message.role = object.role ?? '';
+    message.domain = object.domain ?? '';
+    message.resource = object.resource ?? '';
+    message.action = object.action ?? '';
     return message;
   },
 };
@@ -641,15 +689,22 @@ function createBaseCreateRoleResponse(): CreateRoleResponse {
 }
 
 export const CreateRoleResponse: MessageFns<CreateRoleResponse> = {
-  encode(message: CreateRoleResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: CreateRoleResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.role !== undefined) {
       Role.encode(message.role, writer.uint32(10).fork()).join();
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): CreateRoleResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): CreateRoleResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCreateRoleResponse();
     while (reader.pos < end) {
@@ -673,7 +728,9 @@ export const CreateRoleResponse: MessageFns<CreateRoleResponse> = {
   },
 
   fromJSON(object: any): CreateRoleResponse {
-    return { role: isSet(object.role) ? Role.fromJSON(object.role) : undefined };
+    return {
+      role: isSet(object.role) ? Role.fromJSON(object.role) : undefined,
+    };
   },
 
   toJSON(message: CreateRoleResponse): unknown {
@@ -684,33 +741,44 @@ export const CreateRoleResponse: MessageFns<CreateRoleResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<CreateRoleResponse>, I>>(base?: I): CreateRoleResponse {
+  create<I extends Exact<DeepPartial<CreateRoleResponse>, I>>(
+    base?: I,
+  ): CreateRoleResponse {
     return CreateRoleResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<CreateRoleResponse>, I>>(object: I): CreateRoleResponse {
+  fromPartial<I extends Exact<DeepPartial<CreateRoleResponse>, I>>(
+    object: I,
+  ): CreateRoleResponse {
     const message = createBaseCreateRoleResponse();
-    message.role = (object.role !== undefined && object.role !== null) ? Role.fromPartial(object.role) : undefined;
+    message.role =
+      object.role !== undefined && object.role !== null
+        ? Role.fromPartial(object.role)
+        : undefined;
     return message;
   },
 };
 
 function createBaseReadRoleRequest(): ReadRoleRequest {
-  return { roleId: "", domain: "" };
+  return { roleId: '', domain: '' };
 }
 
 export const ReadRoleRequest: MessageFns<ReadRoleRequest> = {
-  encode(message: ReadRoleRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.roleId !== "") {
+  encode(
+    message: ReadRoleRequest,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.roleId !== '') {
       writer.uint32(10).string(message.roleId);
     }
-    if (message.domain !== "") {
+    if (message.domain !== '') {
       writer.uint32(18).string(message.domain);
     }
     return writer;
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): ReadRoleRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseReadRoleRequest();
     while (reader.pos < end) {
@@ -743,29 +811,33 @@ export const ReadRoleRequest: MessageFns<ReadRoleRequest> = {
 
   fromJSON(object: any): ReadRoleRequest {
     return {
-      roleId: isSet(object.roleId) ? globalThis.String(object.roleId) : "",
-      domain: isSet(object.domain) ? globalThis.String(object.domain) : "",
+      roleId: isSet(object.roleId) ? globalThis.String(object.roleId) : '',
+      domain: isSet(object.domain) ? globalThis.String(object.domain) : '',
     };
   },
 
   toJSON(message: ReadRoleRequest): unknown {
     const obj: any = {};
-    if (message.roleId !== "") {
+    if (message.roleId !== '') {
       obj.roleId = message.roleId;
     }
-    if (message.domain !== "") {
+    if (message.domain !== '') {
       obj.domain = message.domain;
     }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<ReadRoleRequest>, I>>(base?: I): ReadRoleRequest {
+  create<I extends Exact<DeepPartial<ReadRoleRequest>, I>>(
+    base?: I,
+  ): ReadRoleRequest {
     return ReadRoleRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<ReadRoleRequest>, I>>(object: I): ReadRoleRequest {
+  fromPartial<I extends Exact<DeepPartial<ReadRoleRequest>, I>>(
+    object: I,
+  ): ReadRoleRequest {
     const message = createBaseReadRoleRequest();
-    message.roleId = object.roleId ?? "";
-    message.domain = object.domain ?? "";
+    message.roleId = object.roleId ?? '';
+    message.domain = object.domain ?? '';
     return message;
   },
 };
@@ -775,7 +847,10 @@ function createBaseReadRoleResponse(): ReadRoleResponse {
 }
 
 export const ReadRoleResponse: MessageFns<ReadRoleResponse> = {
-  encode(message: ReadRoleResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: ReadRoleResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.role !== undefined) {
       Role.encode(message.role, writer.uint32(10).fork()).join();
     }
@@ -783,7 +858,8 @@ export const ReadRoleResponse: MessageFns<ReadRoleResponse> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): ReadRoleResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseReadRoleResponse();
     while (reader.pos < end) {
@@ -807,7 +883,9 @@ export const ReadRoleResponse: MessageFns<ReadRoleResponse> = {
   },
 
   fromJSON(object: any): ReadRoleResponse {
-    return { role: isSet(object.role) ? Role.fromJSON(object.role) : undefined };
+    return {
+      role: isSet(object.role) ? Role.fromJSON(object.role) : undefined,
+    };
   },
 
   toJSON(message: ReadRoleResponse): unknown {
@@ -818,12 +896,19 @@ export const ReadRoleResponse: MessageFns<ReadRoleResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<ReadRoleResponse>, I>>(base?: I): ReadRoleResponse {
+  create<I extends Exact<DeepPartial<ReadRoleResponse>, I>>(
+    base?: I,
+  ): ReadRoleResponse {
     return ReadRoleResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<ReadRoleResponse>, I>>(object: I): ReadRoleResponse {
+  fromPartial<I extends Exact<DeepPartial<ReadRoleResponse>, I>>(
+    object: I,
+  ): ReadRoleResponse {
     const message = createBaseReadRoleResponse();
-    message.role = (object.role !== undefined && object.role !== null) ? Role.fromPartial(object.role) : undefined;
+    message.role =
+      object.role !== undefined && object.role !== null
+        ? Role.fromPartial(object.role)
+        : undefined;
     return message;
   },
 };
@@ -833,15 +918,22 @@ function createBaseReadUserRolesResponse(): ReadUserRolesResponse {
 }
 
 export const ReadUserRolesResponse: MessageFns<ReadUserRolesResponse> = {
-  encode(message: ReadUserRolesResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: ReadUserRolesResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     for (const v of message.roles) {
       writer.uint32(10).string(v!);
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): ReadUserRolesResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): ReadUserRolesResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseReadUserRolesResponse();
     while (reader.pos < end) {
@@ -865,7 +957,11 @@ export const ReadUserRolesResponse: MessageFns<ReadUserRolesResponse> = {
   },
 
   fromJSON(object: any): ReadUserRolesResponse {
-    return { roles: globalThis.Array.isArray(object?.roles) ? object.roles.map((e: any) => globalThis.String(e)) : [] };
+    return {
+      roles: globalThis.Array.isArray(object?.roles)
+        ? object.roles.map((e: any) => globalThis.String(e))
+        : [],
+    };
   },
 
   toJSON(message: ReadUserRolesResponse): unknown {
@@ -876,10 +972,14 @@ export const ReadUserRolesResponse: MessageFns<ReadUserRolesResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<ReadUserRolesResponse>, I>>(base?: I): ReadUserRolesResponse {
+  create<I extends Exact<DeepPartial<ReadUserRolesResponse>, I>>(
+    base?: I,
+  ): ReadUserRolesResponse {
     return ReadUserRolesResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<ReadUserRolesResponse>, I>>(object: I): ReadUserRolesResponse {
+  fromPartial<I extends Exact<DeepPartial<ReadUserRolesResponse>, I>>(
+    object: I,
+  ): ReadUserRolesResponse {
     const message = createBaseReadUserRolesResponse();
     message.roles = object.roles?.map((e) => e) || [];
     return message;
@@ -887,31 +987,35 @@ export const ReadUserRolesResponse: MessageFns<ReadUserRolesResponse> = {
 };
 
 function createBaseHasRightsRequest(): HasRightsRequest {
-  return { sub: "", dom: "", res: "", act: "", auth: "" };
+  return { sub: '', dom: '', res: '', act: '', auth: '' };
 }
 
 export const HasRightsRequest: MessageFns<HasRightsRequest> = {
-  encode(message: HasRightsRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.sub !== "") {
+  encode(
+    message: HasRightsRequest,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.sub !== '') {
       writer.uint32(10).string(message.sub);
     }
-    if (message.dom !== "") {
+    if (message.dom !== '') {
       writer.uint32(18).string(message.dom);
     }
-    if (message.res !== "") {
+    if (message.res !== '') {
       writer.uint32(26).string(message.res);
     }
-    if (message.act !== "") {
+    if (message.act !== '') {
       writer.uint32(34).string(message.act);
     }
-    if (message.auth !== "") {
+    if (message.auth !== '') {
       writer.uint32(42).string(message.auth);
     }
     return writer;
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): HasRightsRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseHasRightsRequest();
     while (reader.pos < end) {
@@ -968,44 +1072,48 @@ export const HasRightsRequest: MessageFns<HasRightsRequest> = {
 
   fromJSON(object: any): HasRightsRequest {
     return {
-      sub: isSet(object.sub) ? globalThis.String(object.sub) : "",
-      dom: isSet(object.dom) ? globalThis.String(object.dom) : "",
-      res: isSet(object.res) ? globalThis.String(object.res) : "",
-      act: isSet(object.act) ? globalThis.String(object.act) : "",
-      auth: isSet(object.auth) ? globalThis.String(object.auth) : "",
+      sub: isSet(object.sub) ? globalThis.String(object.sub) : '',
+      dom: isSet(object.dom) ? globalThis.String(object.dom) : '',
+      res: isSet(object.res) ? globalThis.String(object.res) : '',
+      act: isSet(object.act) ? globalThis.String(object.act) : '',
+      auth: isSet(object.auth) ? globalThis.String(object.auth) : '',
     };
   },
 
   toJSON(message: HasRightsRequest): unknown {
     const obj: any = {};
-    if (message.sub !== "") {
+    if (message.sub !== '') {
       obj.sub = message.sub;
     }
-    if (message.dom !== "") {
+    if (message.dom !== '') {
       obj.dom = message.dom;
     }
-    if (message.res !== "") {
+    if (message.res !== '') {
       obj.res = message.res;
     }
-    if (message.act !== "") {
+    if (message.act !== '') {
       obj.act = message.act;
     }
-    if (message.auth !== "") {
+    if (message.auth !== '') {
       obj.auth = message.auth;
     }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<HasRightsRequest>, I>>(base?: I): HasRightsRequest {
+  create<I extends Exact<DeepPartial<HasRightsRequest>, I>>(
+    base?: I,
+  ): HasRightsRequest {
     return HasRightsRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<HasRightsRequest>, I>>(object: I): HasRightsRequest {
+  fromPartial<I extends Exact<DeepPartial<HasRightsRequest>, I>>(
+    object: I,
+  ): HasRightsRequest {
     const message = createBaseHasRightsRequest();
-    message.sub = object.sub ?? "";
-    message.dom = object.dom ?? "";
-    message.res = object.res ?? "";
-    message.act = object.act ?? "";
-    message.auth = object.auth ?? "";
+    message.sub = object.sub ?? '';
+    message.dom = object.dom ?? '';
+    message.res = object.res ?? '';
+    message.act = object.act ?? '';
+    message.auth = object.auth ?? '';
     return message;
   },
 };
@@ -1015,7 +1123,10 @@ function createBaseHasRightsResponse(): HasRightsResponse {
 }
 
 export const HasRightsResponse: MessageFns<HasRightsResponse> = {
-  encode(message: HasRightsResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: HasRightsResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.access !== false) {
       writer.uint32(8).bool(message.access);
     }
@@ -1023,7 +1134,8 @@ export const HasRightsResponse: MessageFns<HasRightsResponse> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): HasRightsResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseHasRightsResponse();
     while (reader.pos < end) {
@@ -1047,7 +1159,9 @@ export const HasRightsResponse: MessageFns<HasRightsResponse> = {
   },
 
   fromJSON(object: any): HasRightsResponse {
-    return { access: isSet(object.access) ? globalThis.Boolean(object.access) : false };
+    return {
+      access: isSet(object.access) ? globalThis.Boolean(object.access) : false,
+    };
   },
 
   toJSON(message: HasRightsResponse): unknown {
@@ -1058,10 +1172,14 @@ export const HasRightsResponse: MessageFns<HasRightsResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<HasRightsResponse>, I>>(base?: I): HasRightsResponse {
+  create<I extends Exact<DeepPartial<HasRightsResponse>, I>>(
+    base?: I,
+  ): HasRightsResponse {
     return HasRightsResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<HasRightsResponse>, I>>(object: I): HasRightsResponse {
+  fromPartial<I extends Exact<DeepPartial<HasRightsResponse>, I>>(
+    object: I,
+  ): HasRightsResponse {
     const message = createBaseHasRightsResponse();
     message.access = object.access ?? false;
     return message;
@@ -1069,22 +1187,29 @@ export const HasRightsResponse: MessageFns<HasRightsResponse> = {
 };
 
 function createBaseReadUserRolesRequest(): ReadUserRolesRequest {
-  return { userId: "", tenant: "" };
+  return { userId: '', tenant: '' };
 }
 
 export const ReadUserRolesRequest: MessageFns<ReadUserRolesRequest> = {
-  encode(message: ReadUserRolesRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.userId !== "") {
+  encode(
+    message: ReadUserRolesRequest,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.userId !== '') {
       writer.uint32(10).string(message.userId);
     }
-    if (message.tenant !== "") {
+    if (message.tenant !== '') {
       writer.uint32(18).string(message.tenant);
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): ReadUserRolesRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): ReadUserRolesRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseReadUserRolesRequest();
     while (reader.pos < end) {
@@ -1117,47 +1242,55 @@ export const ReadUserRolesRequest: MessageFns<ReadUserRolesRequest> = {
 
   fromJSON(object: any): ReadUserRolesRequest {
     return {
-      userId: isSet(object.userId) ? globalThis.String(object.userId) : "",
-      tenant: isSet(object.tenant) ? globalThis.String(object.tenant) : "",
+      userId: isSet(object.userId) ? globalThis.String(object.userId) : '',
+      tenant: isSet(object.tenant) ? globalThis.String(object.tenant) : '',
     };
   },
 
   toJSON(message: ReadUserRolesRequest): unknown {
     const obj: any = {};
-    if (message.userId !== "") {
+    if (message.userId !== '') {
       obj.userId = message.userId;
     }
-    if (message.tenant !== "") {
+    if (message.tenant !== '') {
       obj.tenant = message.tenant;
     }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<ReadUserRolesRequest>, I>>(base?: I): ReadUserRolesRequest {
+  create<I extends Exact<DeepPartial<ReadUserRolesRequest>, I>>(
+    base?: I,
+  ): ReadUserRolesRequest {
     return ReadUserRolesRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<ReadUserRolesRequest>, I>>(object: I): ReadUserRolesRequest {
+  fromPartial<I extends Exact<DeepPartial<ReadUserRolesRequest>, I>>(
+    object: I,
+  ): ReadUserRolesRequest {
     const message = createBaseReadUserRolesRequest();
-    message.userId = object.userId ?? "";
-    message.tenant = object.tenant ?? "";
+    message.userId = object.userId ?? '';
+    message.tenant = object.tenant ?? '';
     return message;
   },
 };
 
 function createBaseFindRolesRequest(): FindRolesRequest {
-  return { subId: "" };
+  return { subId: '' };
 }
 
 export const FindRolesRequest: MessageFns<FindRolesRequest> = {
-  encode(message: FindRolesRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.subId !== "") {
+  encode(
+    message: FindRolesRequest,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.subId !== '') {
       writer.uint32(10).string(message.subId);
     }
     return writer;
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): FindRolesRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseFindRolesRequest();
     while (reader.pos < end) {
@@ -1181,23 +1314,29 @@ export const FindRolesRequest: MessageFns<FindRolesRequest> = {
   },
 
   fromJSON(object: any): FindRolesRequest {
-    return { subId: isSet(object.subId) ? globalThis.String(object.subId) : "" };
+    return {
+      subId: isSet(object.subId) ? globalThis.String(object.subId) : '',
+    };
   },
 
   toJSON(message: FindRolesRequest): unknown {
     const obj: any = {};
-    if (message.subId !== "") {
+    if (message.subId !== '') {
       obj.subId = message.subId;
     }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<FindRolesRequest>, I>>(base?: I): FindRolesRequest {
+  create<I extends Exact<DeepPartial<FindRolesRequest>, I>>(
+    base?: I,
+  ): FindRolesRequest {
     return FindRolesRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<FindRolesRequest>, I>>(object: I): FindRolesRequest {
+  fromPartial<I extends Exact<DeepPartial<FindRolesRequest>, I>>(
+    object: I,
+  ): FindRolesRequest {
     const message = createBaseFindRolesRequest();
-    message.subId = object.subId ?? "";
+    message.subId = object.subId ?? '';
     return message;
   },
 };
@@ -1207,7 +1346,10 @@ function createBaseFindRolesResponse(): FindRolesResponse {
 }
 
 export const FindRolesResponse: MessageFns<FindRolesResponse> = {
-  encode(message: FindRolesResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: FindRolesResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     for (const v of message.roles) {
       Role.encode(v!, writer.uint32(10).fork()).join();
     }
@@ -1215,7 +1357,8 @@ export const FindRolesResponse: MessageFns<FindRolesResponse> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): FindRolesResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseFindRolesResponse();
     while (reader.pos < end) {
@@ -1239,7 +1382,11 @@ export const FindRolesResponse: MessageFns<FindRolesResponse> = {
   },
 
   fromJSON(object: any): FindRolesResponse {
-    return { roles: globalThis.Array.isArray(object?.roles) ? object.roles.map((e: any) => Role.fromJSON(e)) : [] };
+    return {
+      roles: globalThis.Array.isArray(object?.roles)
+        ? object.roles.map((e: any) => Role.fromJSON(e))
+        : [],
+    };
   },
 
   toJSON(message: FindRolesResponse): unknown {
@@ -1250,10 +1397,14 @@ export const FindRolesResponse: MessageFns<FindRolesResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<FindRolesResponse>, I>>(base?: I): FindRolesResponse {
+  create<I extends Exact<DeepPartial<FindRolesResponse>, I>>(
+    base?: I,
+  ): FindRolesResponse {
     return FindRolesResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<FindRolesResponse>, I>>(object: I): FindRolesResponse {
+  fromPartial<I extends Exact<DeepPartial<FindRolesResponse>, I>>(
+    object: I,
+  ): FindRolesResponse {
     const message = createBaseFindRolesResponse();
     message.roles = object.roles?.map((e) => Role.fromPartial(e)) || [];
     return message;
@@ -1261,28 +1412,35 @@ export const FindRolesResponse: MessageFns<FindRolesResponse> = {
 };
 
 function createBaseAddUserToRoleRequest(): AddUserToRoleRequest {
-  return { role: "", userId: "", actor: "", domain: "" };
+  return { role: '', userId: '', actor: '', domain: '' };
 }
 
 export const AddUserToRoleRequest: MessageFns<AddUserToRoleRequest> = {
-  encode(message: AddUserToRoleRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.role !== "") {
+  encode(
+    message: AddUserToRoleRequest,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.role !== '') {
       writer.uint32(10).string(message.role);
     }
-    if (message.userId !== "") {
+    if (message.userId !== '') {
       writer.uint32(18).string(message.userId);
     }
-    if (message.actor !== "") {
+    if (message.actor !== '') {
       writer.uint32(26).string(message.actor);
     }
-    if (message.domain !== "") {
+    if (message.domain !== '') {
       writer.uint32(34).string(message.domain);
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): AddUserToRoleRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): AddUserToRoleRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAddUserToRoleRequest();
     while (reader.pos < end) {
@@ -1331,39 +1489,43 @@ export const AddUserToRoleRequest: MessageFns<AddUserToRoleRequest> = {
 
   fromJSON(object: any): AddUserToRoleRequest {
     return {
-      role: isSet(object.role) ? globalThis.String(object.role) : "",
-      userId: isSet(object.userId) ? globalThis.String(object.userId) : "",
-      actor: isSet(object.actor) ? globalThis.String(object.actor) : "",
-      domain: isSet(object.domain) ? globalThis.String(object.domain) : "",
+      role: isSet(object.role) ? globalThis.String(object.role) : '',
+      userId: isSet(object.userId) ? globalThis.String(object.userId) : '',
+      actor: isSet(object.actor) ? globalThis.String(object.actor) : '',
+      domain: isSet(object.domain) ? globalThis.String(object.domain) : '',
     };
   },
 
   toJSON(message: AddUserToRoleRequest): unknown {
     const obj: any = {};
-    if (message.role !== "") {
+    if (message.role !== '') {
       obj.role = message.role;
     }
-    if (message.userId !== "") {
+    if (message.userId !== '') {
       obj.userId = message.userId;
     }
-    if (message.actor !== "") {
+    if (message.actor !== '') {
       obj.actor = message.actor;
     }
-    if (message.domain !== "") {
+    if (message.domain !== '') {
       obj.domain = message.domain;
     }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<AddUserToRoleRequest>, I>>(base?: I): AddUserToRoleRequest {
+  create<I extends Exact<DeepPartial<AddUserToRoleRequest>, I>>(
+    base?: I,
+  ): AddUserToRoleRequest {
     return AddUserToRoleRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<AddUserToRoleRequest>, I>>(object: I): AddUserToRoleRequest {
+  fromPartial<I extends Exact<DeepPartial<AddUserToRoleRequest>, I>>(
+    object: I,
+  ): AddUserToRoleRequest {
     const message = createBaseAddUserToRoleRequest();
-    message.role = object.role ?? "";
-    message.userId = object.userId ?? "";
-    message.actor = object.actor ?? "";
-    message.domain = object.domain ?? "";
+    message.role = object.role ?? '';
+    message.userId = object.userId ?? '';
+    message.actor = object.actor ?? '';
+    message.domain = object.domain ?? '';
     return message;
   },
 };
@@ -1373,15 +1535,22 @@ function createBaseAddUserToRoleResponse(): AddUserToRoleResponse {
 }
 
 export const AddUserToRoleResponse: MessageFns<AddUserToRoleResponse> = {
-  encode(message: AddUserToRoleResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: AddUserToRoleResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     for (const v of message.roles) {
       writer.uint32(10).string(v!);
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): AddUserToRoleResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): AddUserToRoleResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAddUserToRoleResponse();
     while (reader.pos < end) {
@@ -1405,7 +1574,11 @@ export const AddUserToRoleResponse: MessageFns<AddUserToRoleResponse> = {
   },
 
   fromJSON(object: any): AddUserToRoleResponse {
-    return { roles: globalThis.Array.isArray(object?.roles) ? object.roles.map((e: any) => globalThis.String(e)) : [] };
+    return {
+      roles: globalThis.Array.isArray(object?.roles)
+        ? object.roles.map((e: any) => globalThis.String(e))
+        : [],
+    };
   },
 
   toJSON(message: AddUserToRoleResponse): unknown {
@@ -1416,10 +1589,14 @@ export const AddUserToRoleResponse: MessageFns<AddUserToRoleResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<AddUserToRoleResponse>, I>>(base?: I): AddUserToRoleResponse {
+  create<I extends Exact<DeepPartial<AddUserToRoleResponse>, I>>(
+    base?: I,
+  ): AddUserToRoleResponse {
     return AddUserToRoleResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<AddUserToRoleResponse>, I>>(object: I): AddUserToRoleResponse {
+  fromPartial<I extends Exact<DeepPartial<AddUserToRoleResponse>, I>>(
+    object: I,
+  ): AddUserToRoleResponse {
     const message = createBaseAddUserToRoleResponse();
     message.roles = object.roles?.map((e) => e) || [];
     return message;
@@ -1427,19 +1604,26 @@ export const AddUserToRoleResponse: MessageFns<AddUserToRoleResponse> = {
 };
 
 function createBaseAddTenantRolesRequest(): AddTenantRolesRequest {
-  return { domain: "" };
+  return { domain: '' };
 }
 
 export const AddTenantRolesRequest: MessageFns<AddTenantRolesRequest> = {
-  encode(message: AddTenantRolesRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.domain !== "") {
+  encode(
+    message: AddTenantRolesRequest,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.domain !== '') {
       writer.uint32(10).string(message.domain);
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): AddTenantRolesRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): AddTenantRolesRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAddTenantRolesRequest();
     while (reader.pos < end) {
@@ -1463,23 +1647,29 @@ export const AddTenantRolesRequest: MessageFns<AddTenantRolesRequest> = {
   },
 
   fromJSON(object: any): AddTenantRolesRequest {
-    return { domain: isSet(object.domain) ? globalThis.String(object.domain) : "" };
+    return {
+      domain: isSet(object.domain) ? globalThis.String(object.domain) : '',
+    };
   },
 
   toJSON(message: AddTenantRolesRequest): unknown {
     const obj: any = {};
-    if (message.domain !== "") {
+    if (message.domain !== '') {
       obj.domain = message.domain;
     }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<AddTenantRolesRequest>, I>>(base?: I): AddTenantRolesRequest {
+  create<I extends Exact<DeepPartial<AddTenantRolesRequest>, I>>(
+    base?: I,
+  ): AddTenantRolesRequest {
     return AddTenantRolesRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<AddTenantRolesRequest>, I>>(object: I): AddTenantRolesRequest {
+  fromPartial<I extends Exact<DeepPartial<AddTenantRolesRequest>, I>>(
+    object: I,
+  ): AddTenantRolesRequest {
     const message = createBaseAddTenantRolesRequest();
-    message.domain = object.domain ?? "";
+    message.domain = object.domain ?? '';
     return message;
   },
 };
@@ -1489,15 +1679,22 @@ function createBaseAddTenantRolesResponse(): AddTenantRolesResponse {
 }
 
 export const AddTenantRolesResponse: MessageFns<AddTenantRolesResponse> = {
-  encode(message: AddTenantRolesResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: AddTenantRolesResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.success !== false) {
       writer.uint32(8).bool(message.success);
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): AddTenantRolesResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): AddTenantRolesResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAddTenantRolesResponse();
     while (reader.pos < end) {
@@ -1521,7 +1718,11 @@ export const AddTenantRolesResponse: MessageFns<AddTenantRolesResponse> = {
   },
 
   fromJSON(object: any): AddTenantRolesResponse {
-    return { success: isSet(object.success) ? globalThis.Boolean(object.success) : false };
+    return {
+      success: isSet(object.success)
+        ? globalThis.Boolean(object.success)
+        : false,
+    };
   },
 
   toJSON(message: AddTenantRolesResponse): unknown {
@@ -1532,10 +1733,14 @@ export const AddTenantRolesResponse: MessageFns<AddTenantRolesResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<AddTenantRolesResponse>, I>>(base?: I): AddTenantRolesResponse {
+  create<I extends Exact<DeepPartial<AddTenantRolesResponse>, I>>(
+    base?: I,
+  ): AddTenantRolesResponse {
     return AddTenantRolesResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<AddTenantRolesResponse>, I>>(object: I): AddTenantRolesResponse {
+  fromPartial<I extends Exact<DeepPartial<AddTenantRolesResponse>, I>>(
+    object: I,
+  ): AddTenantRolesResponse {
     const message = createBaseAddTenantRolesResponse();
     message.success = object.success ?? false;
     return message;
@@ -1543,145 +1748,178 @@ export const AddTenantRolesResponse: MessageFns<AddTenantRolesResponse> = {
 };
 
 function createBaseRemoveUserFromRoleRequest(): RemoveUserFromRoleRequest {
-  return { tenantId: "", userId: "" };
+  return { tenantId: '', userId: '' };
 }
 
-export const RemoveUserFromRoleRequest: MessageFns<RemoveUserFromRoleRequest> = {
-  encode(message: RemoveUserFromRoleRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.tenantId !== "") {
-      writer.uint32(10).string(message.tenantId);
-    }
-    if (message.userId !== "") {
-      writer.uint32(18).string(message.userId);
-    }
-    return writer;
-  },
-
-  decode(input: BinaryReader | Uint8Array, length?: number): RemoveUserFromRoleRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    const end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseRemoveUserFromRoleRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1: {
-          if (tag !== 10) {
-            break;
-          }
-
-          message.tenantId = reader.string();
-          continue;
-        }
-        case 2: {
-          if (tag !== 18) {
-            break;
-          }
-
-          message.userId = reader.string();
-          continue;
-        }
+export const RemoveUserFromRoleRequest: MessageFns<RemoveUserFromRoleRequest> =
+  {
+    encode(
+      message: RemoveUserFromRoleRequest,
+      writer: BinaryWriter = new BinaryWriter(),
+    ): BinaryWriter {
+      if (message.tenantId !== '') {
+        writer.uint32(10).string(message.tenantId);
       }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
+      if (message.userId !== '') {
+        writer.uint32(18).string(message.userId);
       }
-      reader.skip(tag & 7);
-    }
-    return message;
-  },
+      return writer;
+    },
 
-  fromJSON(object: any): RemoveUserFromRoleRequest {
-    return {
-      tenantId: isSet(object.tenantId) ? globalThis.String(object.tenantId) : "",
-      userId: isSet(object.userId) ? globalThis.String(object.userId) : "",
-    };
-  },
+    decode(
+      input: BinaryReader | Uint8Array,
+      length?: number,
+    ): RemoveUserFromRoleRequest {
+      const reader =
+        input instanceof BinaryReader ? input : new BinaryReader(input);
+      const end = length === undefined ? reader.len : reader.pos + length;
+      const message = createBaseRemoveUserFromRoleRequest();
+      while (reader.pos < end) {
+        const tag = reader.uint32();
+        switch (tag >>> 3) {
+          case 1: {
+            if (tag !== 10) {
+              break;
+            }
 
-  toJSON(message: RemoveUserFromRoleRequest): unknown {
-    const obj: any = {};
-    if (message.tenantId !== "") {
-      obj.tenantId = message.tenantId;
-    }
-    if (message.userId !== "") {
-      obj.userId = message.userId;
-    }
-    return obj;
-  },
+            message.tenantId = reader.string();
+            continue;
+          }
+          case 2: {
+            if (tag !== 18) {
+              break;
+            }
 
-  create<I extends Exact<DeepPartial<RemoveUserFromRoleRequest>, I>>(base?: I): RemoveUserFromRoleRequest {
-    return RemoveUserFromRoleRequest.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<RemoveUserFromRoleRequest>, I>>(object: I): RemoveUserFromRoleRequest {
-    const message = createBaseRemoveUserFromRoleRequest();
-    message.tenantId = object.tenantId ?? "";
-    message.userId = object.userId ?? "";
-    return message;
-  },
-};
+            message.userId = reader.string();
+            continue;
+          }
+        }
+        if ((tag & 7) === 4 || tag === 0) {
+          break;
+        }
+        reader.skip(tag & 7);
+      }
+      return message;
+    },
+
+    fromJSON(object: any): RemoveUserFromRoleRequest {
+      return {
+        tenantId: isSet(object.tenantId)
+          ? globalThis.String(object.tenantId)
+          : '',
+        userId: isSet(object.userId) ? globalThis.String(object.userId) : '',
+      };
+    },
+
+    toJSON(message: RemoveUserFromRoleRequest): unknown {
+      const obj: any = {};
+      if (message.tenantId !== '') {
+        obj.tenantId = message.tenantId;
+      }
+      if (message.userId !== '') {
+        obj.userId = message.userId;
+      }
+      return obj;
+    },
+
+    create<I extends Exact<DeepPartial<RemoveUserFromRoleRequest>, I>>(
+      base?: I,
+    ): RemoveUserFromRoleRequest {
+      return RemoveUserFromRoleRequest.fromPartial(base ?? ({} as any));
+    },
+    fromPartial<I extends Exact<DeepPartial<RemoveUserFromRoleRequest>, I>>(
+      object: I,
+    ): RemoveUserFromRoleRequest {
+      const message = createBaseRemoveUserFromRoleRequest();
+      message.tenantId = object.tenantId ?? '';
+      message.userId = object.userId ?? '';
+      return message;
+    },
+  };
 
 function createBaseRemoveUserFromRoleResponse(): RemoveUserFromRoleResponse {
   return { success: false };
 }
 
-export const RemoveUserFromRoleResponse: MessageFns<RemoveUserFromRoleResponse> = {
-  encode(message: RemoveUserFromRoleResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.success !== false) {
-      writer.uint32(8).bool(message.success);
-    }
-    return writer;
-  },
+export const RemoveUserFromRoleResponse: MessageFns<RemoveUserFromRoleResponse> =
+  {
+    encode(
+      message: RemoveUserFromRoleResponse,
+      writer: BinaryWriter = new BinaryWriter(),
+    ): BinaryWriter {
+      if (message.success !== false) {
+        writer.uint32(8).bool(message.success);
+      }
+      return writer;
+    },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): RemoveUserFromRoleResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    const end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseRemoveUserFromRoleResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1: {
-          if (tag !== 8) {
-            break;
+    decode(
+      input: BinaryReader | Uint8Array,
+      length?: number,
+    ): RemoveUserFromRoleResponse {
+      const reader =
+        input instanceof BinaryReader ? input : new BinaryReader(input);
+      const end = length === undefined ? reader.len : reader.pos + length;
+      const message = createBaseRemoveUserFromRoleResponse();
+      while (reader.pos < end) {
+        const tag = reader.uint32();
+        switch (tag >>> 3) {
+          case 1: {
+            if (tag !== 8) {
+              break;
+            }
+
+            message.success = reader.bool();
+            continue;
           }
-
-          message.success = reader.bool();
-          continue;
         }
+        if ((tag & 7) === 4 || tag === 0) {
+          break;
+        }
+        reader.skip(tag & 7);
       }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
+      return message;
+    },
+
+    fromJSON(object: any): RemoveUserFromRoleResponse {
+      return {
+        success: isSet(object.success)
+          ? globalThis.Boolean(object.success)
+          : false,
+      };
+    },
+
+    toJSON(message: RemoveUserFromRoleResponse): unknown {
+      const obj: any = {};
+      if (message.success !== false) {
+        obj.success = message.success;
       }
-      reader.skip(tag & 7);
-    }
-    return message;
-  },
+      return obj;
+    },
 
-  fromJSON(object: any): RemoveUserFromRoleResponse {
-    return { success: isSet(object.success) ? globalThis.Boolean(object.success) : false };
-  },
-
-  toJSON(message: RemoveUserFromRoleResponse): unknown {
-    const obj: any = {};
-    if (message.success !== false) {
-      obj.success = message.success;
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<RemoveUserFromRoleResponse>, I>>(base?: I): RemoveUserFromRoleResponse {
-    return RemoveUserFromRoleResponse.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<RemoveUserFromRoleResponse>, I>>(object: I): RemoveUserFromRoleResponse {
-    const message = createBaseRemoveUserFromRoleResponse();
-    message.success = object.success ?? false;
-    return message;
-  },
-};
+    create<I extends Exact<DeepPartial<RemoveUserFromRoleResponse>, I>>(
+      base?: I,
+    ): RemoveUserFromRoleResponse {
+      return RemoveUserFromRoleResponse.fromPartial(base ?? ({} as any));
+    },
+    fromPartial<I extends Exact<DeepPartial<RemoveUserFromRoleResponse>, I>>(
+      object: I,
+    ): RemoveUserFromRoleResponse {
+      const message = createBaseRemoveUserFromRoleResponse();
+      message.success = object.success ?? false;
+      return message;
+    },
+  };
 
 function createBaseAddPolicyRequest(): AddPolicyRequest {
   return { params: [] };
 }
 
 export const AddPolicyRequest: MessageFns<AddPolicyRequest> = {
-  encode(message: AddPolicyRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: AddPolicyRequest,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     for (const v of message.params) {
       writer.uint32(10).string(v!);
     }
@@ -1689,7 +1927,8 @@ export const AddPolicyRequest: MessageFns<AddPolicyRequest> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): AddPolicyRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAddPolicyRequest();
     while (reader.pos < end) {
@@ -1714,7 +1953,9 @@ export const AddPolicyRequest: MessageFns<AddPolicyRequest> = {
 
   fromJSON(object: any): AddPolicyRequest {
     return {
-      params: globalThis.Array.isArray(object?.params) ? object.params.map((e: any) => globalThis.String(e)) : [],
+      params: globalThis.Array.isArray(object?.params)
+        ? object.params.map((e: any) => globalThis.String(e))
+        : [],
     };
   },
 
@@ -1726,10 +1967,14 @@ export const AddPolicyRequest: MessageFns<AddPolicyRequest> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<AddPolicyRequest>, I>>(base?: I): AddPolicyRequest {
+  create<I extends Exact<DeepPartial<AddPolicyRequest>, I>>(
+    base?: I,
+  ): AddPolicyRequest {
     return AddPolicyRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<AddPolicyRequest>, I>>(object: I): AddPolicyRequest {
+  fromPartial<I extends Exact<DeepPartial<AddPolicyRequest>, I>>(
+    object: I,
+  ): AddPolicyRequest {
     const message = createBaseAddPolicyRequest();
     message.params = object.params?.map((e) => e) || [];
     return message;
@@ -1741,7 +1986,10 @@ function createBaseAddPolicyResponse(): AddPolicyResponse {
 }
 
 export const AddPolicyResponse: MessageFns<AddPolicyResponse> = {
-  encode(message: AddPolicyResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: AddPolicyResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.success !== false) {
       writer.uint32(8).bool(message.success);
     }
@@ -1749,7 +1997,8 @@ export const AddPolicyResponse: MessageFns<AddPolicyResponse> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): AddPolicyResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAddPolicyResponse();
     while (reader.pos < end) {
@@ -1773,7 +2022,11 @@ export const AddPolicyResponse: MessageFns<AddPolicyResponse> = {
   },
 
   fromJSON(object: any): AddPolicyResponse {
-    return { success: isSet(object.success) ? globalThis.Boolean(object.success) : false };
+    return {
+      success: isSet(object.success)
+        ? globalThis.Boolean(object.success)
+        : false,
+    };
   },
 
   toJSON(message: AddPolicyResponse): unknown {
@@ -1784,10 +2037,14 @@ export const AddPolicyResponse: MessageFns<AddPolicyResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<AddPolicyResponse>, I>>(base?: I): AddPolicyResponse {
+  create<I extends Exact<DeepPartial<AddPolicyResponse>, I>>(
+    base?: I,
+  ): AddPolicyResponse {
     return AddPolicyResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<AddPolicyResponse>, I>>(object: I): AddPolicyResponse {
+  fromPartial<I extends Exact<DeepPartial<AddPolicyResponse>, I>>(
+    object: I,
+  ): AddPolicyResponse {
     const message = createBaseAddPolicyResponse();
     message.success = object.success ?? false;
     return message;
@@ -1799,13 +2056,17 @@ export interface RoleService {
   ReadRole(request: ReadRoleRequest): Promise<ReadRoleResponse>;
   HasRights(request: HasRightsRequest): Promise<HasRightsResponse>;
   AddPolicy(request: AddPolicyRequest): Promise<AddPolicyResponse>;
-  AddTenantRoles(request: AddTenantRolesRequest): Promise<AddTenantRolesResponse>;
+  AddTenantRoles(
+    request: AddTenantRolesRequest,
+  ): Promise<AddTenantRolesResponse>;
   AddUserToRole(request: AddUserToRoleRequest): Promise<AddUserToRoleResponse>;
-  RemoveUserFromRole(request: RemoveUserFromRoleRequest): Promise<RemoveUserFromRoleResponse>;
+  RemoveUserFromRole(
+    request: RemoveUserFromRoleRequest,
+  ): Promise<RemoveUserFromRoleResponse>;
   ReadUserRoles(request: ReadUserRolesRequest): Promise<ReadUserRolesResponse>;
 }
 
-export const RoleServiceServiceName = "io.ultimatebackend.srv.role.RoleService";
+export const RoleServiceServiceName = 'io.ultimatebackend.srv.role.RoleService';
 export class RoleServiceClientImpl implements RoleService {
   private readonly rpc: Rpc;
   private readonly service: string;
@@ -1823,68 +2084,106 @@ export class RoleServiceClientImpl implements RoleService {
   }
   CreateRole(request: CreateRoleRequest): Promise<CreateRoleResponse> {
     const data = CreateRoleRequest.encode(request).finish();
-    const promise = this.rpc.request(this.service, "CreateRole", data);
-    return promise.then((data) => CreateRoleResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(this.service, 'CreateRole', data);
+    return promise.then((data) =>
+      CreateRoleResponse.decode(new BinaryReader(data)),
+    );
   }
 
   ReadRole(request: ReadRoleRequest): Promise<ReadRoleResponse> {
     const data = ReadRoleRequest.encode(request).finish();
-    const promise = this.rpc.request(this.service, "ReadRole", data);
-    return promise.then((data) => ReadRoleResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(this.service, 'ReadRole', data);
+    return promise.then((data) =>
+      ReadRoleResponse.decode(new BinaryReader(data)),
+    );
   }
 
   HasRights(request: HasRightsRequest): Promise<HasRightsResponse> {
     const data = HasRightsRequest.encode(request).finish();
-    const promise = this.rpc.request(this.service, "HasRights", data);
-    return promise.then((data) => HasRightsResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(this.service, 'HasRights', data);
+    return promise.then((data) =>
+      HasRightsResponse.decode(new BinaryReader(data)),
+    );
   }
 
   AddPolicy(request: AddPolicyRequest): Promise<AddPolicyResponse> {
     const data = AddPolicyRequest.encode(request).finish();
-    const promise = this.rpc.request(this.service, "AddPolicy", data);
-    return promise.then((data) => AddPolicyResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(this.service, 'AddPolicy', data);
+    return promise.then((data) =>
+      AddPolicyResponse.decode(new BinaryReader(data)),
+    );
   }
 
-  AddTenantRoles(request: AddTenantRolesRequest): Promise<AddTenantRolesResponse> {
+  AddTenantRoles(
+    request: AddTenantRolesRequest,
+  ): Promise<AddTenantRolesResponse> {
     const data = AddTenantRolesRequest.encode(request).finish();
-    const promise = this.rpc.request(this.service, "AddTenantRoles", data);
-    return promise.then((data) => AddTenantRolesResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(this.service, 'AddTenantRoles', data);
+    return promise.then((data) =>
+      AddTenantRolesResponse.decode(new BinaryReader(data)),
+    );
   }
 
   AddUserToRole(request: AddUserToRoleRequest): Promise<AddUserToRoleResponse> {
     const data = AddUserToRoleRequest.encode(request).finish();
-    const promise = this.rpc.request(this.service, "AddUserToRole", data);
-    return promise.then((data) => AddUserToRoleResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(this.service, 'AddUserToRole', data);
+    return promise.then((data) =>
+      AddUserToRoleResponse.decode(new BinaryReader(data)),
+    );
   }
 
-  RemoveUserFromRole(request: RemoveUserFromRoleRequest): Promise<RemoveUserFromRoleResponse> {
+  RemoveUserFromRole(
+    request: RemoveUserFromRoleRequest,
+  ): Promise<RemoveUserFromRoleResponse> {
     const data = RemoveUserFromRoleRequest.encode(request).finish();
-    const promise = this.rpc.request(this.service, "RemoveUserFromRole", data);
-    return promise.then((data) => RemoveUserFromRoleResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(this.service, 'RemoveUserFromRole', data);
+    return promise.then((data) =>
+      RemoveUserFromRoleResponse.decode(new BinaryReader(data)),
+    );
   }
 
   ReadUserRoles(request: ReadUserRolesRequest): Promise<ReadUserRolesResponse> {
     const data = ReadUserRolesRequest.encode(request).finish();
-    const promise = this.rpc.request(this.service, "ReadUserRoles", data);
-    return promise.then((data) => ReadUserRolesResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(this.service, 'ReadUserRoles', data);
+    return promise.then((data) =>
+      ReadUserRolesResponse.decode(new BinaryReader(data)),
+    );
   }
 }
 
 interface Rpc {
-  request(service: string, method: string, data: Uint8Array): Promise<Uint8Array>;
+  request(
+    service: string,
+    method: string,
+    data: Uint8Array,
+  ): Promise<Uint8Array>;
 }
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin =
+  | Date
+  | Function
+  | Uint8Array
+  | string
+  | number
+  | boolean
+  | undefined;
 
-export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
-  : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
-  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+export type DeepPartial<T> = T extends Builtin
+  ? T
+  : T extends globalThis.Array<infer U>
+  ? globalThis.Array<DeepPartial<U>>
+  : T extends ReadonlyArray<infer U>
+  ? ReadonlyArray<DeepPartial<U>>
+  : T extends {}
+  ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
 
 type KeysOfUnion<T> = T extends T ? keyof T : never;
-export type Exact<P, I extends P> = P extends Builtin ? P
-  : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
+export type Exact<P, I extends P> = P extends Builtin
+  ? P
+  : P & { [K in keyof P]: Exact<P[K], I[K]> } & {
+      [K in Exclude<keyof I, KeysOfUnion<P>>]: never;
+    };
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

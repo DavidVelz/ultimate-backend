@@ -18,7 +18,13 @@ export async function microserviceSetup(
   const { hostname = '0.0.0.0', enableMqtt, enableNats } = options;
 
   AppUtils.killAppWithGrace(app);
-  const protoFullPath = join(process.cwd(), 'dist', 'libs', 'proto-schema', protoPath);
+  const protoFullPath = join(
+    process.cwd(),
+    'dist',
+    'libs',
+    'proto-schema',
+    protoPath,
+  );
   const protoDir = dirname(protoFullPath);
 
   app.connectMicroservice({

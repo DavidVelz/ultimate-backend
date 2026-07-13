@@ -44,6 +44,28 @@ export function authSetup(
 
     const store = new RedisStore({ client: redisClient });
 
+    // Some legacy/corrupted entries in Redis may not include "cookie".
+    // express-session crashes on those entries when restoring a session.
+    const originalGet = store.get.bind(store);
+    store.get = (sid: string, callback: any) => {
+      originalGet(sid, (error: any, sess: any) => {
+        if (error) {
+          return callback(error);
+        }
+
+        if (sess && !sess.cookie) {
+          Logger.warn(
+            `Invalid session payload detected for sid=${sid}. Removing it from Redis.`,
+            'auth.setup',
+          );
+
+          return store.destroy(sid, () => callback(null, null));
+        }
+
+        return callback(null, sess);
+      });
+    };
+
     // sessions
     const sessionMiddleware = session({
       secret: authConfig.sessionSecret,
