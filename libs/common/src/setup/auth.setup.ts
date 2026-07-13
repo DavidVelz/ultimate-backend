@@ -1,14 +1,17 @@
 import { INestApplication, Logger } from '@nestjs/common';
-const session = require('express-session');
-import * as passport from 'passport';
-import * as redis from 'redis';
-const useragent = require('express-useragent');
-const cookieParser = require('cookie-parser');
 import { Express } from 'express';
 import { NestCloud } from '@nestcloud/core';
 
+import * as passport from 'passport';
+import * as redis from 'redis';
+
+const session = require('express-session');
+const connectRedis = require('connect-redis');
+const cookieParser = require('cookie-parser');
+const useragent = require('express-useragent');
 const parseIsoDuration = require('parse-iso-duration');
-const { RedisStore } = require('connect-redis');
+
+const RedisStore = connectRedis(session);
 
 const passportMiddleware = passport.initialize();
 const passportSessionMiddleware = passport.session();
@@ -22,6 +25,7 @@ export function authSetup(
       'redis',
       {},
     );
+
     const authConfig: {
       sessionKey?: string;
       sessionSecret?: string;
@@ -37,56 +41,37 @@ export function authSetup(
       delete redisConfig.password;
     }
 
-    // redis init
     const redisClient = redis.createClient({
       ...redisConfig,
     });
 
-    const store = new RedisStore({ client: redisClient });
+    redisClient.on('error', (err) => {
+      Logger.error(err, 'Redis');
+    });
 
-    // Some legacy/corrupted entries in Redis may not include "cookie".
-    // express-session crashes on those entries when restoring a session.
-    const originalGet = store.get.bind(store);
-    store.get = (sid: string, callback: any) => {
-      originalGet(sid, (error: any, sess: any) => {
-        if (error) {
-          return callback(error);
-        }
+    const store = new RedisStore({
+      client: redisClient,
+    });
 
-        if (sess && !sess.cookie) {
-          Logger.warn(
-            `Invalid session payload detected for sid=${sid}. Removing it from Redis.`,
-            'auth.setup',
-          );
-
-          return store.destroy(sid, () => callback(null, null));
-        }
-
-        return callback(null, sess);
-      });
-    };
-
-    // sessions
     const sessionMiddleware = session({
+      store,
       secret: authConfig.sessionSecret,
-      resave: Boolean(authConfig?.resave),
-      rolling: Boolean(authConfig?.rolling),
+      resave: Boolean(authConfig.resave),
+      rolling: Boolean(authConfig.rolling),
       saveUninitialized: false,
+
       cookie: {
         maxAge: parseIsoDuration('PT' + authConfig.cookieMaxAge),
-        secure: Boolean(authConfig?.secure),
-        domain: authConfig?.domain,
+        secure: Boolean(authConfig.secure),
+        domain: authConfig.domain,
       },
-      // proxy: withPassport === true ? undefined : true,
-      store,
+
       name: authConfig.sessionKey,
     });
 
     const anyApp = app as any;
 
     if (withPassport) {
-      // @ts-ignore
-      // anyApp.set('trust proxy', 1);
       anyApp.use(sessionMiddleware);
       anyApp.use(useragent.express());
       anyApp.use(passportMiddleware);
@@ -95,9 +80,8 @@ export function authSetup(
       anyApp.use(cookieParser());
     }
 
-    // @ts-ignore
-    anyApp.set('subdomain offset', 1); // Enable sub domain in app
+    anyApp.set('subdomain offset', 1);
   } catch (e) {
-    Logger.log(e, 'auth.setup');
+    Logger.error(e, 'auth.setup');
   }
 }
