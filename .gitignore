@@ -17,6 +17,8 @@ lerna-debug.log*
 *.env
 apps/*/config.yaml
 *config.example
+apps/service-billing/config.example
+apps/service-notification/config.example
 
 # Terraform
 /iac/.terraform/*
