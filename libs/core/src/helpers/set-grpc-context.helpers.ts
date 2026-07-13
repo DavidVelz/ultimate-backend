@@ -35,7 +35,6 @@ export function getIdentityFromCtx(meta: Metadata): {
   tenantInfo: TenantInfo;
   inApp: any;
 } {
-
   const gmap = meta.getMap();
   const tempUser = gmap.user;
   const tempInApp = gmap.inapp;
