@@ -2,33 +2,40 @@ import { Metadata } from 'grpc';
 import { GqlContext } from '../';
 import { TenantEntity, UserEntity } from '@ultimatebackend/repository';
 import { TenantInfo } from '@ultimatebackend/core/mutiltenancy';
+import { sanitizeForGrpcMeta } from './sanitize-for-grpc-meta';
 
 export function setRpcContext(ctx: GqlContext, inApp?: boolean): Metadata {
-  const meta = new Metadata();
-  meta.set('headers', JSON.stringify((ctx.req as any).headers));
+  try {
+    const meta = new Metadata();
+    meta.set('headers', sanitizeForGrpcMeta((ctx.req as any).headers));
 
-  if (ctx.isAuthenticated()) {
-    meta.set('user', JSON.stringify(ctx.getUser()));
-  }
-
-  // @ts-ignore
-  if (ctx.req.tenantInfo) {
     // @ts-ignore
-    meta.set('x-tenant-info', JSON.stringify(ctx.req.tenantInfo));
-  }
+    if (ctx.isAuthenticated()) {
+      meta.set('user', sanitizeForGrpcMeta(ctx.getUser()));
+    }
 
-  if (inApp) {
-    meta.set('inApp', inApp.toString());
+    // @ts-ignore
+    if (ctx.req.tenantInfo) {
+      // @ts-ignore
+      meta.set('x-tenant-info', sanitizeForGrpcMeta(ctx.req.tenantInfo));
+    }
+
+    if (inApp) {
+      meta.set('inApp', inApp.toString());
+    }
+    return meta;
+  } catch (error) {
+    console.error('setRpcContext error', error);
   }
-  return meta;
 }
 
 export function getIdentityFromCtx(meta: Metadata): {
   user: UserEntity;
   tenant: TenantEntity;
   tenantInfo: TenantInfo;
-  inApp;
+  inApp: any;
 } {
+
   const gmap = meta.getMap();
   const tempUser = gmap.user;
   const tempInApp = gmap.inapp;
