@@ -11,10 +11,11 @@ export class IdentifyMachineUtils {
   sender() {
     const headers = this.req?.headers || {};
     const connection = this.req?.connection || {};
-    const ip = headers['x-forwarded-for'] || connection.remoteAddress || 'unknown';
+    const ip =
+      headers['x-forwarded-for'] || connection.remoteAddress || 'unknown';
     Logger.log(ip, this.constructor.name);
     // const address = new Address6(ip);
-    
+
     return {
       ip,
       userAgent: 'free',

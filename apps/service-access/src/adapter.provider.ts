@@ -13,7 +13,7 @@ export const adapterProvider: Provider = {
   provide: CASBIN_CUSTOM_ADAPTER,
   useFactory: async (config: EtcdConfig) => {
     const casbin = config.get<ConsulDatabaseConfig>('database');
-    let uri = "mongodb://localhost:27017/";
+    let uri = 'mongodb://localhost:27017/';
     uri = uri.slice(0, uri.length - 1);
     return await MongoAdapter.newAdapter({
       uri: jestMongoDb || uri,
